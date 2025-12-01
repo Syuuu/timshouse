@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+title {
+  margin: 0;
+}
+
+.greeting {
+  font-size: 28px;
+  font-weight: 800;
+  color: #e48fb1;
+}
+
+.encourage {
+  margin-top: 6px;
+  color: #7b6f78;
+}
+
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.taskCard {
+  padding: 12px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--card-shadow);
+}
+
+.taskNumber {
+  font-size: 26px;
+  font-weight: 800;
+  color: #d66fa3;
+}
+
+
+.emptyHint {
+  padding: 12px;
+  text-align: center;
+  color: #9a8fa0;
+  background: #fff7fb;
+  border-radius: 12px;
+}
