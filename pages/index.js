@@ -36,7 +36,9 @@ function prepareBlankProgress() {
       vocabIds: [],
       grammarIds: [],
       completedIds: [],
-      summary: { newVocab: 0, reviewVocab: 0, newGrammar: 0, reviewGrammar: 0 }
+      summary: { newVocab: 0, reviewVocab: 0, newGrammar: 0, reviewGrammar: 0 },
+      studyDone: false,
+      quizDone: false
     },
     history: []
   };
@@ -47,7 +49,16 @@ function loadProgress() {
   const saved = localStorage.getItem('n2Progress');
   if (!saved) return prepareBlankProgress();
   try {
-    return { ...prepareBlankProgress(), ...JSON.parse(saved) };
+    const parsed = JSON.parse(saved);
+    const blank = prepareBlankProgress();
+    return {
+      ...blank,
+      ...parsed,
+      vocabStatus: parsed.vocabStatus || {},
+      grammarStatus: parsed.grammarStatus || {},
+      today: { ...blank.today, ...(parsed.today || {}) },
+      history: parsed.history || []
+    };
   } catch (e) {
     return prepareBlankProgress();
   }
@@ -66,12 +77,18 @@ function buildMap(list) {
   return map;
 }
 
-function ensureHistory(progress, completed) {
+function ensureHistory(progress, payload = {}) {
   const today = getTodayString();
   const historyList = progress.history ? [...progress.history] : [];
   const existingIndex = historyList.findIndex((item) => item.date === today);
   const base = existingIndex >= 0 ? historyList[existingIndex] : { date: today };
-  const updated = { ...base, completed };
+  const updated = {
+    ...base,
+    studyDone: payload.studyDone ?? base.studyDone ?? false,
+    quizDone: payload.quizDone ?? base.quizDone ?? false,
+    accuracy: payload.accuracy ?? base.accuracy
+  };
+  updated.completed = Boolean(updated.studyDone && updated.quizDone);
   if (existingIndex >= 0) {
     historyList[existingIndex] = updated;
   } else {
@@ -153,6 +170,8 @@ function prepareToday(progress) {
     vocabIds: todayVocab,
     grammarIds: todayGrammar,
     completedIds: [],
+    studyDone: false,
+    quizDone: false,
     summary: {
       newVocab: newVocab.length,
       reviewVocab: dueVocab.length,
@@ -161,7 +180,7 @@ function prepareToday(progress) {
     }
   };
 
-  updatedStatus.history = ensureHistory(updatedStatus, false);
+  updatedStatus.history = ensureHistory(updatedStatus, { studyDone: false, quizDone: false });
   saveProgress(updatedStatus);
   return updatedStatus;
 }
@@ -205,6 +224,10 @@ export default function Home() {
 
   const streakInfo = useMemo(() => calculateStreak(progress?.history || []), [progress]);
 
+  const studyDone = progress?.today?.studyDone || false;
+  const quizDone = progress?.today?.quizDone || false;
+  const todayCompleted = studyDone && quizDone;
+
   const handleRate = (card, level) => {
     const today = getTodayString();
     const updated = { ...progress };
@@ -232,7 +255,11 @@ export default function Home() {
 
     const total = updated.today.vocabIds.length + updated.today.grammarIds.length;
     const completedAll = updated.today.completedIds.length >= total && total > 0;
-    updated.history = ensureHistory(updated, completedAll);
+    updated.today.studyDone = completedAll || updated.today.studyDone;
+    updated.history = ensureHistory(updated, {
+      studyDone: updated.today.studyDone,
+      quizDone: updated.today.quizDone
+    });
 
     setProgress(updated);
     saveProgress(updated);
@@ -257,6 +284,9 @@ export default function Home() {
         encouragement={encouragement}
         streakDays={streakInfo.days}
         streakLevel={streakInfo.level}
+        todayCompleted={todayCompleted}
+        studyDone={studyDone}
+        quizDone={quizDone}
         onStartStudy={() => {
           const studyBlock = document.getElementById('study');
           if (studyBlock) studyBlock.scrollIntoView({ behavior: 'smooth' });

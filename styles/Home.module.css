@@ -86,3 +86,35 @@
   background: #fff7fb;
   border-radius: 12px;
 }
+
+.completionNote {
+  margin-top: 6px;
+  color: #7a6d87;
+  font-weight: 700;
+}
+
+.completionTagRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--card-shadow);
+}
+
+.tagDone {
+  background: linear-gradient(120deg, #e3f7f1, #cde7ff);
+  color: #3c7d73;
+}
+
+.tagTodo {
+  background: linear-gradient(120deg, #fff5f5, #ffe7f3);
+  color: #c07b9b;
+}

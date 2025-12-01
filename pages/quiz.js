@@ -19,7 +19,23 @@ function loadProgress() {
   const saved = localStorage.getItem('n2Progress');
   if (!saved) return null;
   try {
-    return JSON.parse(saved);
+    const parsed = JSON.parse(saved);
+    const blankToday = {
+      date: '',
+      vocabIds: [],
+      grammarIds: [],
+      completedIds: [],
+      summary: { newVocab: 0, reviewVocab: 0, newGrammar: 0, reviewGrammar: 0 },
+      studyDone: false,
+      quizDone: false
+    };
+    return {
+      ...parsed,
+      vocabStatus: parsed.vocabStatus || {},
+      grammarStatus: parsed.grammarStatus || {},
+      today: { ...blankToday, ...(parsed.today || {}) },
+      history: parsed.history || []
+    };
   } catch (e) {
     return null;
   }
@@ -41,6 +57,28 @@ function shuffle(array) {
 
 function pickRandom(list, count) {
   return shuffle(list).slice(0, count);
+}
+
+function ensureHistory(progress, payload = {}) {
+  const today = getTodayString();
+  const historyList = progress.history ? [...progress.history] : [];
+  const existingIndex = historyList.findIndex((item) => item.date === today);
+  const base = existingIndex >= 0 ? historyList[existingIndex] : { date: today };
+  const updated = {
+    ...base,
+    studyDone: payload.studyDone ?? base.studyDone ?? false,
+    quizDone: payload.quizDone ?? base.quizDone ?? false,
+    accuracy: payload.accuracy ?? base.accuracy
+  };
+  updated.completed = Boolean(updated.studyDone && updated.quizDone);
+
+  if (existingIndex >= 0) {
+    historyList[existingIndex] = updated;
+  } else {
+    historyList.unshift(updated);
+  }
+
+  return historyList;
 }
 
 function maskGrammarSentence(example, pattern) {
@@ -109,17 +147,16 @@ export default function QuizPage() {
     setResult(payload);
     const stored = loadProgress();
     if (!stored) return;
-    const historyList = stored.history ? [...stored.history] : [];
-    const today = getTodayString();
-    const existingIndex = historyList.findIndex((item) => item.date === today);
-    const base = existingIndex >= 0 ? historyList[existingIndex] : { date: today };
-    const updated = { ...base, accuracy: payload.accuracy, completed: base.completed || false };
-    if (existingIndex >= 0) {
-      historyList[existingIndex] = updated;
-    } else {
-      historyList.unshift(updated);
+    const next = { ...stored, today: { ...(stored.today || {}) } };
+    if (next.today?.date === getTodayString()) {
+      next.today.quizDone = true;
     }
-    const next = { ...stored, history: historyList };
+    const historyList = ensureHistory(next, {
+      quizDone: true,
+      studyDone: next.today?.studyDone,
+      accuracy: payload.accuracy
+    });
+    next.history = historyList;
     saveProgress(next);
     setProgress(next);
   };

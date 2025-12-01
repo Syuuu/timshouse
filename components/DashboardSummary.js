@@ -11,10 +11,17 @@ export default function DashboardSummary({
   encouragement,
   streakDays,
   streakLevel,
+  todayCompleted,
+  studyDone,
+  quizDone,
   onStartStudy,
   onStartQuiz,
   history
 }) {
+  const completionText = todayCompleted
+    ? '今天的学习已完成！'
+    : '今天还没学习完成哦（需要完成学习卡片和小测试）';
+
   return (
     <div className="section">
       <div className={styles.header}>
@@ -65,6 +72,17 @@ export default function DashboardSummary({
           <div className="progress-inner" style={{ width: `${progressPercent}%` }} />
         </div>
         <div className="subtle-text" style={{ marginTop: 4 }}>{progressPercent}% 完成</div>
+        <div className={styles.completionNote}>{completionText}</div>
+        {!todayCompleted && (
+          <div className={styles.completionTagRow}>
+            <span className={`${styles.tag} ${studyDone ? styles.tagDone : styles.tagTodo}`}>
+              学习卡片 {studyDone ? '已完成' : '未完成'}
+            </span>
+            <span className={`${styles.tag} ${quizDone ? styles.tagDone : styles.tagTodo}`}>
+              小测试 {quizDone ? '已完成' : '未完成'}
+            </span>
+          </div>
+        )}
       </div>
 
       <div style={{ marginTop: 14 }}>
