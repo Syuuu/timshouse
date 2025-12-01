@@ -79,7 +79,7 @@ export const vocabN2 = [
     examples: [
       { jp: '社会に貢献できる仕事をしたい。', cn: '想做能贡献社会的工作。' }
     ]
-  }
+  },
    {
     id: 'vocab_009',
     level: 'N2',
