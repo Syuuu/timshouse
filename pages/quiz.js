@@ -6,8 +6,8 @@ import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
-const QUIZ_VOCAB_COUNT = 4;
-const QUIZ_GRAMMAR_COUNT = 3;
+const QUIZ_VOCAB_COUNT = 5;
+const QUIZ_GRAMMAR_COUNT = 15;
 
 function getTodayString() {
   const today = new Date();
