@@ -6,8 +6,8 @@ import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
 // 可以在这里修改每日新单词和新语法数量
-const DAILY_NEW_VOCAB = 3;
-const DAILY_NEW_GRAMMAR = 2;
+const DAILY_NEW_VOCAB = 15;
+const DAILY_NEW_GRAMMAR = 5;
 
 function getTodayString() {
   const today = new Date();

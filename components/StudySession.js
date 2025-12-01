@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function StudySession({ cards, onRate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -6,6 +6,14 @@ export default function StudySession({ cards, onRate }) {
 
   const remainingCards = useMemo(() => cards.filter((c) => !c.completed), [cards]);
   const currentCard = remainingCards[currentIndex] || null;
+
+  useEffect(() => {
+    // 当剩余卡片数量变少且当前索引超出范围时，重置到第一张，避免误判已完成
+    if (currentIndex >= remainingCards.length && remainingCards.length > 0) {
+      setCurrentIndex(0);
+      setShowAnswer(false);
+    }
+  }, [currentIndex, remainingCards.length]);
 
   const encouragements = [
     '保持稳稳的节奏，小雨也能轻松拿下 N2',
