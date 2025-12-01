@@ -21,6 +21,12 @@ function addDays(baseDate, days) {
   return date.toISOString().slice(0, 10);
 }
 
+function previousDateString(dateString) {
+  const date = new Date(dateString);
+  date.setDate(date.getDate() - 1);
+  return date.toISOString().slice(0, 10);
+}
+
 function prepareBlankProgress() {
   return {
     vocabStatus: {},
@@ -72,6 +78,46 @@ function ensureHistory(progress, completed) {
     historyList.unshift(updated);
   }
   return historyList;
+}
+
+function getStreakLevel(days) {
+  if (days >= 20) return '星光守护者';
+  if (days >= 14) return '稳步达人';
+  if (days >= 7) return '云上进阶';
+  if (days >= 3) return '萌芽连击';
+  if (days >= 1) return '起步之光';
+  return '等待出发';
+}
+
+function calculateStreak(history = []) {
+  if (!history.length) return { days: 0, level: getStreakLevel(0) };
+
+  const completed = history
+    .filter((item) => item.completed)
+    .sort((a, b) => b.date.localeCompare(a.date));
+
+  if (!completed.length) return { days: 0, level: getStreakLevel(0) };
+
+  let streak = 0;
+  let expectedPrev = null;
+
+  for (let i = 0; i < completed.length; i += 1) {
+    const currentDate = completed[i].date;
+    if (streak === 0) {
+      streak = 1;
+      expectedPrev = previousDateString(currentDate);
+      continue;
+    }
+
+    if (currentDate === expectedPrev) {
+      streak += 1;
+      expectedPrev = previousDateString(currentDate);
+    } else if (currentDate < expectedPrev) {
+      break;
+    }
+  }
+
+  return { days: streak, level: getStreakLevel(streak) };
 }
 
 function prepareToday(progress) {
@@ -157,6 +203,8 @@ export default function Home() {
     return Math.round((progress.today.completedIds.length / total) * 100);
   }, [progress]);
 
+  const streakInfo = useMemo(() => calculateStreak(progress?.history || []), [progress]);
+
   const handleRate = (card, level) => {
     const today = getTodayString();
     const updated = { ...progress };
@@ -207,6 +255,8 @@ export default function Home() {
         summary={summary}
         progressPercent={progressPercent}
         encouragement={encouragement}
+        streakDays={streakInfo.days}
+        streakLevel={streakInfo.level}
         onStartStudy={() => {
           const studyBlock = document.getElementById('study');
           if (studyBlock) studyBlock.scrollIntoView({ behavior: 'smooth' });

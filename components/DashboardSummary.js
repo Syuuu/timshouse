@@ -9,6 +9,8 @@ export default function DashboardSummary({
   summary,
   progressPercent,
   encouragement,
+  streakDays,
+  streakLevel,
   onStartStudy,
   onStartQuiz,
   history
@@ -23,6 +25,15 @@ export default function DashboardSummary({
         <div className="flex-row">
           <button className="primary-button" onClick={onStartStudy}>开始学习</button>
           <button className="primary-button" onClick={onStartQuiz}>开始测试</button>
+        </div>
+      </div>
+
+      <div className={styles.streakArea}>
+        <div className={styles.streakCard}>
+          <div className={styles.streakLabel}>连续学习</div>
+          <div className={styles.streakValue}><span>{streakDays}</span> 天</div>
+          <div className={styles.streakLevel}>段位：{streakLevel}</div>
+          <div className="subtle-text">保持节奏，每天 10 分钟累积成就。</div>
         </div>
       </div>
 

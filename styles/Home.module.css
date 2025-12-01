@@ -43,6 +43,41 @@
   color: #c56fa1;
 }
 
+.streakArea {
+  margin-top: 14px;
+}
+
+.streakCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(255, 243, 248, 0.92), rgba(215, 207, 251, 0.92));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.streakLabel {
+  font-weight: 700;
+  color: #8b6b92;
+}
+
+.streakValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: #d2779b;
+}
+
+.streakValue span {
+  font-size: 40px;
+}
+
+.streakLevel {
+  color: #5f4b70;
+  font-weight: 700;
+}
+
 
 .emptyHint {
   padding: 12px;
