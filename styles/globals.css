@@ -69,30 +69,6 @@ button {
   transform: translateY(0);
 }
 
-.ghost-button {
-  background: #fff;
-  border: 1px solid #f0d2df;
-  padding: 10px 14px;
-  border-radius: 12px;
-  color: var(--text);
-  font-weight: 700;
-  cursor: pointer;
-  transition: border 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: var(--card-shadow);
-}
-
-.ghost-button:hover {
-  border-color: var(--pink);
-  transform: translateY(-1px);
-}
-
-.ghost-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
 .subtle-text {
   color: #7b6f78;
   font-size: 14px;
