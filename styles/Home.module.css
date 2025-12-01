@@ -1,0 +1,116 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.greeting {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(120deg, #f6b9d3, #c8c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.encourage {
+  margin-top: 6px;
+  color: #6f6277;
+}
+
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.taskCard {
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.92), rgba(255, 243, 249, 0.9));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.taskNumber {
+  font-size: 26px;
+  font-weight: 800;
+  color: #c56fa1;
+}
+
+.streakArea {
+  margin-top: 14px;
+}
+
+.streakCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(255, 243, 248, 0.92), rgba(215, 207, 251, 0.92));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.streakLabel {
+  font-weight: 700;
+  color: #8b6b92;
+}
+
+.streakValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: #d2779b;
+}
+
+.streakValue span {
+  font-size: 40px;
+}
+
+.streakLevel {
+  color: #5f4b70;
+  font-weight: 700;
+}
+
+
+.emptyHint {
+  padding: 12px;
+  text-align: center;
+  color: #9a8fa0;
+  background: #fff7fb;
+  border-radius: 12px;
+}
+
+.completionNote {
+  margin-top: 6px;
+  color: #7a6d87;
+  font-weight: 700;
+}
+
+.completionTagRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--card-shadow);
+}
+
+.tagDone {
+  background: linear-gradient(120deg, #e3f7f1, #cde7ff);
+  color: #3c7d73;
+}
+
+.tagTodo {
+  background: linear-gradient(120deg, #fff5f5, #ffe7f3);
+  color: #c07b9b;
+}
