@@ -6,6 +6,10 @@
   flex-wrap: wrap;
 }
 
+.title {
+  margin: 0;
+}
+
 .greeting {
   font-size: 28px;
   font-weight: 800;
