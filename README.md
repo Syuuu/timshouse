@@ -1,4 +1,4 @@
-# JLPT N2 甜甜学习 Web App
+# JLPT N2 小雨学习 Web App
 
 使用 Next.js 14（pages 路由）+ React 编写的轻量 N2 学习小站，包含每日任务、卡片式学习与小测功能。
 
@@ -17,4 +17,4 @@ npm run dev
 ## 构建与部署到 Vercel
 1. 将代码推送到 GitHub 仓库。
 2. 在 Vercel 导入仓库，框架选择 Next.js，保持默认构建命令 `npm run build` 与启动命令 `npm start`。
-3. 部署完成后即可分享甜甜的专属学习入口。
+3. 部署完成后即可分享小雨的专属学习入口。

@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect, useMemo, useState } from 'react';
 import DashboardSummary from '../components/DashboardSummary';
 import StudySession from '../components/StudySession';
@@ -124,7 +125,11 @@ export default function Home() {
   const [encouragement, setEncouragement] = useState('');
 
   useEffect(() => {
-    const encourages = ['今天也一起轻松学习 10 分钟就好～', '慢慢来，每一步都是进步', '带着小熊软糖的心情学习吧'];
+    const encourages = [
+      '今天留一点时间给小雨的日语旅程吧',
+      '再忙也能轻松学 10 分钟，稳稳向前',
+      '保持节奏，每天一点点就能看见进步'
+    ];
     setEncouragement(encourages[Math.floor(Math.random() * encourages.length)]);
   }, []);
 
@@ -193,6 +198,11 @@ export default function Home() {
 
   return (
     <div className="container">
+      <Head>
+        <title>小雨的 N2 学习桌</title>
+        <meta name="description" content="为小雨准备的 JLPT N2 轻量学习与测试工具" />
+      </Head>
+
       <DashboardSummary
         summary={summary}
         progressPercent={progressPercent}

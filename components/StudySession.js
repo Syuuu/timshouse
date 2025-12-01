@@ -7,7 +7,11 @@ export default function StudySession({ cards, onRate }) {
   const remainingCards = useMemo(() => cards.filter((c) => !c.completed), [cards]);
   const currentCard = remainingCards[currentIndex] || null;
 
-  const encouragements = ['今天也一起轻松学习 10 分钟就好～', '慢慢来，女朋友最棒啦！', '小口小口学习，甜甜更有效哦～'];
+  const encouragements = [
+    '保持稳稳的节奏，小雨也能轻松拿下 N2',
+    '10 分钟就好，把今天的积累完成',
+    '专心看一张卡片，感受自己的进展'
+  ];
   const hint = encouragements[Math.floor(Math.random() * encouragements.length)];
 
   const handleRate = (level) => {
@@ -21,14 +25,14 @@ export default function StudySession({ cards, onRate }) {
   };
 
   if (!cards || cards.length === 0) {
-    return <div className="section">今日没有需要学习的内容，去休息一下吧～</div>;
+    return <div className="section">今日没有需要学习的内容，可以留一点时间给自己放松。</div>;
   }
 
   if (!currentCard) {
     return (
       <div className="section">
         <div className="section-title">今日任务已完成</div>
-        <div className="subtle-text">好棒！要不要做个小测试检验一下？</div>
+        <div className="subtle-text">恭喜收工，可以去做个小测试检验一下。</div>
       </div>
     );
   }

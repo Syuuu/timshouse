@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import QuizPanel from '../components/QuizPanel';
 import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
@@ -41,6 +43,16 @@ function pickRandom(list, count) {
   return shuffle(list).slice(0, count);
 }
 
+function maskGrammarSentence(example, pattern) {
+  const jp = example?.jp || '';
+  // 去掉「〜」后尝试挖空，避免直接暴露正确答案
+  const plain = pattern.replace(/[〜~]/g, '');
+  if (plain && jp.includes(plain)) {
+    return jp.replace(plain, '＿＿');
+  }
+  return `${jp}（请选择合适的语法填空）`;
+}
+
 function buildVocabQuestion(item, pool) {
   const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.meaning), 3);
   const options = shuffle([item.meaning, ...wrongOptions]);
@@ -57,10 +69,11 @@ function buildGrammarQuestion(item, pool) {
   const wrongOptions = pickRandom(pool.filter((g) => g.id !== item.id).map((g) => g.pattern), 3);
   const options = shuffle([item.pattern, ...wrongOptions]);
   const example = item.examples[0] || { jp: '', cn: '' };
+  const prompt = maskGrammarSentence(example, item.pattern);
   return {
     id: `q_${item.id}`,
     type: 'grammar',
-    prompt: `${example.jp.replace(item.pattern, '＿＿')}`,
+    prompt,
     extra: example.cn,
     options,
     answer: item.pattern
@@ -68,6 +81,7 @@ function buildGrammarQuestion(item, pool) {
 }
 
 export default function QuizPage() {
+  const router = useRouter();
   const [progress, setProgress] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [result, setResult] = useState(null);
@@ -111,17 +125,25 @@ export default function QuizPage() {
   };
 
   const titleText = useMemo(() => {
-    if (!result) return '加油，答完看看自己的进步！';
-    if (result.accuracy >= 90) return '几乎全对，好厉害！';
-    if (result.accuracy >= 70) return '表现很好，保持哦';
-    return '没关系，错的地方再看看就好';
+    if (!result) return '完成全部题目后查看本次表现';
+    if (result.accuracy >= 90) return '几乎全对，保持这份手感';
+    if (result.accuracy >= 70) return '表现不错，巩固一下细节就好';
+    return '记录一下错题，下一次就能更稳';
   }, [result]);
 
   return (
     <div className="container">
+      <Head>
+        <title>小雨的 N2 小测试</title>
+        <meta name="description" content="为小雨设计的 JLPT N2 每日巩固小测" />
+      </Head>
       <div className="section">
-        <div className="section-title">甜甜 N2 小测试</div>
+        <div className="section-title">小雨 N2 小测试</div>
         <div className="subtle-text">{titleText}</div>
+        <div className="actionRow" style={{ marginTop: 10 }}>
+          <button className="ghost-button" onClick={() => router.back()}>返回上一页</button>
+          <button className="ghost-button" onClick={() => router.push('/')}>回到首页</button>
+        </div>
       </div>
 
       {questions.length > 0 ? (

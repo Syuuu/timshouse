@@ -17,7 +17,7 @@ export default function DashboardSummary({
     <div className="section">
       <div className={styles.header}>
         <div>
-          <div className={styles.greeting}>N2 甜甜学习桌</div>
+          <div className={styles.greeting}>小雨的 N2 学习桌</div>
           <div className={styles.encourage}>{encouragement}</div>
         </div>
         <div className="flex-row">
