@@ -271,11 +271,24 @@ export default function Home() {
 
   const summary = progress.today.summary;
 
+  const shareTitle = '小雨的 N2 学习桌';
+  const shareDescription = '为小雨准备的 JLPT N2 轻量学习与测试工具，包含间隔复习、卡片练习与轻量测试。';
+  const shareImage = '/share-card.svg';
+
   return (
     <div className="container">
       <Head>
-        <title>小雨的 N2 学习桌</title>
-        <meta name="description" content="为小雨准备的 JLPT N2 轻量学习与测试工具" />
+        <title>{shareTitle}</title>
+        <meta name="description" content={shareDescription} />
+        {/* 微信/朋友圈分享时的展示信息 */}
+        <meta property="og:title" content={shareTitle} />
+        <meta property="og:description" content={shareDescription} />
+        <meta property="og:image" content={shareImage} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={shareTitle} />
+        <meta name="twitter:description" content={shareDescription} />
+        <meta name="twitter:image" content={shareImage} />
       </Head>
 
       <DashboardSummary
