@@ -8,10 +8,8 @@ function formatDate(dateString) {
 export default function DashboardSummary({
   summary,
   progressPercent,
-  encouragement,
   streakDays,
   streakLevel,
-  todayLabel,
   examCountdown,
   todayCompleted,
   studyDone,
@@ -27,27 +25,18 @@ export default function DashboardSummary({
   return (
     <div className="section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className={styles.heroCard}>
-        <div className={styles.heroPills}>
+        <div className={styles.heroHeader}>
           <span className={styles.heroBadge}>JLPT N2 ・ 小雨的练习桌</span>
-          <div className={styles.dateRow}>
-            <span className={styles.datePill}>今天：{todayLabel}</span>
-            <span className={`${styles.datePill} ${styles.datePillAccent}`}>
-              距离 2026/7/6 考试还剩 {examCountdown} 天
-            </span>
-          </div>
+          <span className={`${styles.datePill} ${styles.datePillAccent}`}>
+            距离 2026/7/6 考试还有 {examCountdown} 天
+          </span>
         </div>
 
-        <div className={styles.heroTextBlock}>
+          <div className={styles.heroTextBlock}>
           <div className={styles.greeting}>小雨的 N2 学习桌</div>
-          <div className={styles.encourage}>{encouragement}</div>
-          <div className={styles.heroNote}>
-            每日 10 分钟，温柔巩固词汇与语法，稳步靠近 N2 目标。
-          </div>
+          <div className={styles.heroNote}>每日 10 分钟，温柔巩固词汇与语法，稳步靠近 N2 目标。</div>
           <div className={styles.ctaPanel}>
-            <div className={styles.ctaLegend}>
-              <div className={styles.ctaTitle}>今日主线</div>
-              <div className="subtle-text">先学后测，完整完成算作今日达成</div>
-            </div>
+            <div className={styles.ctaLegend}>完成学习卡片 + 小测试，即可记录为今日完成</div>
             <div className={styles.ctaButtons}>
               <button className={`${styles.ctaAction} ${styles.ctaPrimary}`} onClick={onStartStudy}>开始学习</button>
               <button className={`${styles.ctaAction} ${styles.ctaSecondary}`} onClick={onStartQuiz}>开始测试</button>

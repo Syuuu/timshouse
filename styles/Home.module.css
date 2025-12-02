@@ -1,8 +1,8 @@
 .heroCard {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  padding: 18px 16px;
+  gap: 14px;
+  padding: 18px 18px 16px;
   border-radius: 18px;
   background: linear-gradient(135deg, rgba(255, 239, 247, 0.96), rgba(215, 207, 251, 0.95));
   border: 1px solid rgba(255, 255, 255, 0.9);
@@ -27,11 +27,19 @@
   z-index: 1;
 }
 
+.heroHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .heroNote {
-  margin-top: 8px;
-  color: #5d4f68;
-  font-weight: 600;
-  line-height: 1.5;
+  margin-top: 10px;
+  color: #56455f;
+  font-weight: 700;
+  line-height: 1.6;
 }
 
 .greeting {
@@ -40,17 +48,6 @@
   background: linear-gradient(120deg, #f6b9d3, #c8c3ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.encourage {
-  margin-top: 6px;
-  color: #6f6277;
-}
-
-.heroPills {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .heroBadge {
@@ -64,12 +61,6 @@
   color: #8a6da4;
   font-weight: 800;
   box-shadow: 0 12px 22px rgba(60, 39, 80, 0.08);
-}
-
-.dateRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
 }
 
 .datePill {
@@ -90,26 +81,19 @@
 }
 
 .ctaPanel {
-  margin-top: 18px;
-  padding: 12px;
-  border-radius: 14px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(248, 236, 255, 0.82));
-  box-shadow: 0 18px 30px rgba(195, 167, 228, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 15px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(248, 236, 255, 0.86));
+  box-shadow: 0 18px 30px rgba(195, 167, 228, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.92);
 }
 
 .ctaLegend {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 10px;
-  color: #6f637b;
-}
-
-.ctaTitle {
-  font-weight: 800;
-  color: #d2779b;
+  margin-bottom: 12px;
+  color: #7b6d8c;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .ctaButtons {

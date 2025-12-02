@@ -21,12 +21,6 @@ function addDays(baseDate, days) {
   return date.toISOString().slice(0, 10);
 }
 
-function formatDisplayDate(dateString) {
-  const date = new Date(dateString);
-  const options = { month: 'long', day: 'numeric', weekday: 'short' };
-  return date.toLocaleDateString('ja-JP', options);
-}
-
 function daysUntilExam() {
   const today = new Date(getTodayString());
   const examDate = new Date('2026-07-06');
@@ -200,19 +194,8 @@ function prepareToday(progress) {
 
 export default function Home() {
   const [progress, setProgress] = useState(null);
-  const [encouragement, setEncouragement] = useState('');
 
-  const todayLabel = useMemo(() => formatDisplayDate(getTodayString()), []);
   const examCountdown = useMemo(() => daysUntilExam(), []);
-
-  useEffect(() => {
-    const encourages = [
-      '今天留一点时间给小雨的日语旅程吧',
-      '再忙也能轻松学 10 分钟，稳稳向前',
-      '保持节奏，每天一点点就能看见进步'
-    ];
-    setEncouragement(encourages[Math.floor(Math.random() * encourages.length)]);
-  }, []);
 
   useEffect(() => {
     const loaded = loadProgress();
@@ -310,10 +293,8 @@ export default function Home() {
       <DashboardSummary
         summary={summary}
         progressPercent={progressPercent}
-        encouragement={encouragement}
         streakDays={streakInfo.days}
         streakLevel={streakInfo.level}
-        todayLabel={todayLabel}
         examCountdown={examCountdown}
         todayCompleted={todayCompleted}
         studyDone={studyDone}
