@@ -1,0 +1,267 @@
+.heroCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255, 239, 247, 0.96), rgba(215, 207, 251, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCard::after {
+  content: '';
+  position: absolute;
+  inset: -8px auto auto -20px;
+  width: 260px;
+  height: 160px;
+  background: url('/decor-bubbles.svg') no-repeat center/contain;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+
+.heroTextBlock {
+  z-index: 1;
+}
+
+.heroNote {
+  margin-top: 8px;
+  color: #5d4f68;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.greeting {
+  font-size: 30px;
+  font-weight: 800;
+  background: linear-gradient(120deg, #f6b9d3, #c8c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.encourage {
+  margin-top: 6px;
+  color: #6f6277;
+}
+
+.heroPills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heroBadge {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #8a6da4;
+  font-weight: 800;
+  box-shadow: 0 12px 22px rgba(60, 39, 80, 0.08);
+}
+
+.dateRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.datePill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #7a688f;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(101, 73, 120, 0.12);
+}
+
+.datePillAccent {
+  background: linear-gradient(120deg, rgba(255, 229, 242, 0.95), rgba(220, 208, 255, 0.92));
+  color: #c36295;
+}
+
+.ctaPanel {
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(248, 236, 255, 0.82));
+  box-shadow: 0 18px 30px rgba(195, 167, 228, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.ctaLegend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: #6f637b;
+}
+
+.ctaTitle {
+  font-weight: 800;
+  color: #d2779b;
+}
+
+.ctaButtons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.ctaAction {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: none;
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.ctaAction:hover {
+  transform: translateY(-2px);
+}
+
+.ctaAction:active {
+  transform: translateY(0);
+}
+
+.ctaPrimary {
+  background: linear-gradient(110deg, #f7c6dd, #cfc2ff);
+  color: #fff;
+  box-shadow: 0 18px 32px rgba(204, 178, 233, 0.45);
+}
+
+.ctaSecondary {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(244, 234, 255, 0.9));
+  color: #6a4c7d;
+  border: 1px solid rgba(204, 185, 235, 0.9);
+  box-shadow: 0 16px 28px rgba(117, 86, 156, 0.12);
+}
+
+
+
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.taskCard {
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.92), rgba(255, 243, 249, 0.9));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.taskLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #7c6a85;
+}
+
+.taskIcon {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(63, 44, 79, 0.08);
+}
+
+.taskNumber {
+  font-size: 26px;
+  font-weight: 800;
+  color: #c56fa1;
+}
+
+.streakArea {
+  margin-top: 14px;
+}
+
+.streakCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(255, 243, 248, 0.92), rgba(215, 207, 251, 0.92));
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.streakLabel {
+  font-weight: 700;
+  color: #8b6b92;
+}
+
+.streakValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: #d2779b;
+}
+
+.streakValue span {
+  font-size: 40px;
+}
+
+.streakLevel {
+  color: #5f4b70;
+  font-weight: 700;
+}
+
+.emptyHint {
+  padding: 12px;
+  text-align: center;
+  color: #9a8fa0;
+  background: #fff7fb;
+  border-radius: 12px;
+}
+
+.completionNote {
+  margin-top: 6px;
+  color: #7a6d87;
+  font-weight: 700;
+}
+
+.completionTagRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--card-shadow);
+}
+
+.tagDone {
+  background: linear-gradient(120deg, #e3f7f1, #cde7ff);
+  color: #3c7d73;
+}
+
+.tagTodo {
+  background: linear-gradient(120deg, #fff5f5, #ffe7f3);
+  color: #c07b9b;
+}
