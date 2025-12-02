@@ -1,4 +1,3 @@
-// 想增加新单词，只需要在数组中继续追加同样结构的对象即可。
 export const vocabN2 = [
   {
     id: 'vocab_001',
@@ -88,10 +87,10 @@ export const vocabN2 = [
     meaning: '预想；推测',
     examples: [
       { jp: '試験の結果を予想してみた。', cn: '试着预想了一下考试结果。' }
-      ]
-    },  
-   {
-    id: 'vocab_009',
+    ]
+  },
+  {
+    id: 'vocab_010',
     level: 'N2',
     word: '苦手',
     reading: 'にがて',
@@ -101,13 +100,8 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_010',
+    id: 'vocab_011',
     level: 'N2',
-    word: '候補',
-    reading: 'こうほ',
-    meaning: '候选；备选',
-    examples: [
-      { jp: '旅行先の候補を三つに絞った。', cn: '把旅行目的地的候选缩小到了三个。' }
     word: '得意',
     reading: 'とくい',
     meaning: '拿手；得意',
@@ -116,13 +110,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_011',
+    id: 'vocab_012',
     level: 'N2',
     word: '省く',
     reading: 'はぶく',
     meaning: '省去；省略',
     examples: [
       { jp: '無駄な工程を省いて時間を節約する。', cn: '省去无用的工序来节约时间。' }
+    ]
+  },
+  {
+    id: 'vocab_013',
+    level: 'N2',
     word: '遠慮',
     reading: 'えんりょ',
     meaning: '客气；顾虑',
@@ -131,13 +130,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_012',
+    id: 'vocab_014',
     level: 'N2',
     word: '承る',
     reading: 'うけたまわる',
     meaning: '恭敬地接受；听取',
     examples: [
       { jp: 'ご要望は確かに承りました。', cn: '您的要求已经恭敬地收下了。' }
+    ]
+  },
+  {
+    id: 'vocab_015',
+    level: 'N2',
     word: '配慮',
     reading: 'はいりょ',
     meaning: '照顾，关照',
@@ -146,13 +150,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_013',
+    id: 'vocab_016',
     level: 'N2',
     word: '延長',
     reading: 'えんちょう',
     meaning: '延长；拉长',
     examples: [
       { jp: '会議が延長されて帰りが遅くなった。', cn: '会议延长了，回家时间变晚了。' }
+    ]
+  },
+  {
+    id: 'vocab_017',
+    level: 'N2',
     word: '姿勢',
     reading: 'しせい',
     meaning: '姿势；态度',
@@ -161,13 +170,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_014',
+    id: 'vocab_018',
     level: 'N2',
     word: '見直す',
     reading: 'みなおす',
     meaning: '重新审视；重新考虑',
     examples: [
       { jp: '計画を見直して改善点を探す。', cn: '重新审视计划，寻找改进点。' }
+    ]
+  },
+  {
+    id: 'vocab_019',
+    level: 'N2',
     word: '傾向',
     reading: 'けいこう',
     meaning: '倾向，趋势',
@@ -176,13 +190,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_015',
+    id: 'vocab_020',
     level: 'N2',
     word: '応援',
     reading: 'おうえん',
     meaning: '声援；支持',
     examples: [
       { jp: '大会で友達を応援しに行った。', cn: '去比赛现场为朋友加油。' }
+    ]
+  },
+  {
+    id: 'vocab_021',
+    level: 'N2',
     word: '影響',
     reading: 'えいきょう',
     meaning: '影响',
@@ -191,13 +210,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_016',
+    id: 'vocab_022',
     level: 'N2',
     word: '取引',
     reading: 'とりひき',
     meaning: '交易；往来',
     examples: [
       { jp: '新しい会社と取引を始めた。', cn: '开始和一家新公司进行交易。' }
+    ]
+  },
+  {
+    id: 'vocab_023',
+    level: 'N2',
     word: '事情',
     reading: 'じじょう',
     meaning: '缘由，情况',
@@ -206,14 +230,19 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_017',
+    id: 'vocab_024',
     level: 'N2',
     word: '作成',
     reading: 'さくせい',
     meaning: '制作；撰写',
     examples: [
       { jp: '資料を作成して明日提出します。', cn: '制作好资料明天提交。' }
-    word: '事情',
+    ]
+  },
+  {
+    id: 'vocab_025',
+    level: 'N2',
+    word: 'こと',
     reading: 'こと',
     meaning: '事情（抽象地说“事、情况”）',
     examples: [
@@ -221,13 +250,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_018',
+    id: 'vocab_026',
     level: 'N2',
     word: '改善',
     reading: 'かいぜん',
     meaning: '改善；改进',
     examples: [
       { jp: '生活習慣を改善したい。', cn: '想改善生活习惯。' }
+    ]
+  },
+  {
+    id: 'vocab_027',
+    level: 'N2',
     word: '疑問',
     reading: 'ぎもん',
     meaning: '疑问，问题点',
@@ -236,13 +270,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_019',
+    id: 'vocab_028',
     level: 'N2',
     word: '許可',
     reading: 'きょか',
     meaning: '许可；允许',
     examples: [
       { jp: '部屋の使用には許可が必要です。', cn: '使用房间需要得到许可。' }
+    ]
+  },
+  {
+    id: 'vocab_029',
+    level: 'N2',
     word: '変更',
     reading: 'へんこう',
     meaning: '变更，修改',
@@ -251,13 +290,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_020',
+    id: 'vocab_030',
     level: 'N2',
     word: '余裕',
     reading: 'よゆう',
     meaning: '充裕；从容',
     examples: [
       { jp: '時間に余裕を持って行動してください。', cn: '请留有余裕地行动。' }
+    ]
+  },
+  {
+    id: 'vocab_031',
+    level: 'N2',
     word: '成長',
     reading: 'せいちょう',
     meaning: '成长，发展',
@@ -266,13 +310,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_021',
+    id: 'vocab_032',
     level: 'N2',
     word: '目標',
     reading: 'もくひょう',
     meaning: '目标；方向',
     examples: [
       { jp: '今年の目標を紙に書いて貼った。', cn: '把今年的目标写在纸上贴起来了。' }
+    ]
+  },
+  {
+    id: 'vocab_033',
+    level: 'N2',
     word: '成績',
     reading: 'せいせき',
     meaning: '成绩，成果',
@@ -281,13 +330,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_022',
+    id: 'vocab_034',
     level: 'N2',
     word: '自信',
     reading: 'じしん',
     meaning: '自信；信心',
     examples: [
       { jp: '練習を重ねて自信がついた。', cn: '反复练习后有了自信。' }
+    ]
+  },
+  {
+    id: 'vocab_035',
+    level: 'N2',
     word: '可能性',
     reading: 'かのうせい',
     meaning: '可能性',
@@ -296,13 +350,18 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_023',
+    id: 'vocab_036',
     level: 'N2',
     word: 'こだわる',
     reading: 'こだわる',
     meaning: '讲究；执着',
     examples: [
       { jp: '素材にこだわって料理を作る。', cn: '在意食材的品质来做料理。' }
+    ]
+  },
+  {
+    id: 'vocab_037',
+    level: 'N2',
     word: '割合',
     reading: 'わりあい',
     meaning: '比例；相对来说',
@@ -311,7 +370,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_024',
+    id: 'vocab_038',
     level: 'N2',
     word: '程度',
     reading: 'ていど',
@@ -321,7 +380,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_025',
+    id: 'vocab_039',
     level: 'N2',
     word: '傾く',
     reading: 'かたむく',
@@ -331,7 +390,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_026',
+    id: 'vocab_040',
     level: 'N2',
     word: '支える',
     reading: 'ささえる',
@@ -341,7 +400,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_027',
+    id: 'vocab_041',
     level: 'N2',
     word: '抱える',
     reading: 'かかえる',
@@ -351,7 +410,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_028',
+    id: 'vocab_042',
     level: 'N2',
     word: '焦る',
     reading: 'あせる',
@@ -361,7 +420,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_029',
+    id: 'vocab_043',
     level: 'N2',
     word: '迷う',
     reading: 'まよう',
@@ -371,7 +430,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_030',
+    id: 'vocab_044',
     level: 'N2',
     word: '悩む',
     reading: 'なやむ',
@@ -381,7 +440,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_031',
+    id: 'vocab_045',
     level: 'N2',
     word: '望む',
     reading: 'のぞむ',
@@ -391,7 +450,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_032',
+    id: 'vocab_046',
     level: 'N2',
     word: '求める',
     reading: 'もとめる',
@@ -401,7 +460,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_033',
+    id: 'vocab_047',
     level: 'N2',
     word: '認める',
     reading: 'みとめる',
@@ -411,7 +470,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_034',
+    id: 'vocab_048',
     level: 'N2',
     word: '疑う',
     reading: 'うたがう',
@@ -421,7 +480,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_035',
+    id: 'vocab_049',
     level: 'N2',
     word: '比較',
     reading: 'ひかく',
@@ -431,7 +490,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_036',
+    id: 'vocab_050',
     level: 'N2',
     word: '評価',
     reading: 'ひょうか',
@@ -441,7 +500,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_037',
+    id: 'vocab_051',
     level: 'N2',
     word: '観察',
     reading: 'かんさつ',
@@ -451,7 +510,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_038',
+    id: 'vocab_052',
     level: 'N2',
     word: '想像',
     reading: 'そうぞう',
@@ -461,7 +520,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_039',
+    id: 'vocab_053',
     level: 'N2',
     word: '主張',
     reading: 'しゅちょう',
@@ -471,7 +530,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_040',
+    id: 'vocab_054',
     level: 'N2',
     word: '説得',
     reading: 'せっとく',
@@ -481,7 +540,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_041',
+    id: 'vocab_055',
     level: 'N2',
     word: '納得',
     reading: 'なっとく',
@@ -491,7 +550,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_042',
+    id: 'vocab_056',
     level: 'N2',
     word: '尊敬',
     reading: 'そんけい',
@@ -501,7 +560,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_043',
+    id: 'vocab_057',
     level: 'N2',
     word: '感謝',
     reading: 'かんしゃ',
@@ -511,7 +570,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_044',
+    id: 'vocab_058',
     level: 'N2',
     word: '我慢',
     reading: 'がまん',
@@ -521,7 +580,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_045',
+    id: 'vocab_059',
     level: 'N2',
     word: '遠慮なく',
     reading: 'えんりょなく',
@@ -531,7 +590,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_046',
+    id: 'vocab_060',
     level: 'N2',
     word: 'きちんと',
     reading: 'きちんと',
@@ -541,7 +600,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_047',
+    id: 'vocab_061',
     level: 'N2',
     word: 'しっかり',
     reading: 'しっかり',
@@ -551,7 +610,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_048',
+    id: 'vocab_062',
     level: 'N2',
     word: 'じっくり',
     reading: 'じっくり',
@@ -561,7 +620,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_049',
+    id: 'vocab_063',
     level: 'N2',
     word: 'つい',
     reading: 'つい',
@@ -571,7 +630,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_050',
+    id: 'vocab_064',
     level: 'N2',
     word: 'ついに',
     reading: 'ついに',
@@ -581,7 +640,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_051',
+    id: 'vocab_065',
     level: 'N2',
     word: 'やはり',
     reading: 'やはり',
@@ -591,7 +650,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_052',
+    id: 'vocab_066',
     level: 'N2',
     word: 'さっぱり',
     reading: 'さっぱり',
@@ -601,7 +660,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_053',
+    id: 'vocab_067',
     level: 'N2',
     word: 'すっかり',
     reading: 'すっかり',
@@ -611,7 +670,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_054',
+    id: 'vocab_068',
     level: 'N2',
     word: 'たっぷり',
     reading: 'たっぷり',
@@ -621,7 +680,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_055',
+    id: 'vocab_069',
     level: 'N2',
     word: 'かなり',
     reading: 'かなり',
@@ -631,7 +690,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_056',
+    id: 'vocab_070',
     level: 'N2',
     word: 'けっこう',
     reading: 'けっこう',
@@ -641,7 +700,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_057',
+    id: 'vocab_071',
     level: 'N2',
     word: 'まさか',
     reading: 'まさか',
@@ -651,7 +710,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_058',
+    id: 'vocab_072',
     level: 'N2',
     word: 'もしも',
     reading: 'もしも',
@@ -661,7 +720,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_059',
+    id: 'vocab_073',
     level: 'N2',
     word: 'さすが',
     reading: 'さすが',
@@ -671,7 +730,7 @@ export const vocabN2 = [
     ]
   },
   {
-    id: 'vocab_060',
+    id: 'vocab_074',
     level: 'N2',
     word: 'ついでに',
     reading: 'ついでに',
