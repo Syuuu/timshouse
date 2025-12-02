@@ -88,6 +88,8 @@ export const vocabN2 = [
     meaning: '预想；推测',
     examples: [
       { jp: '試験の結果を予想してみた。', cn: '试着预想了一下考试结果。' }
+      ]
+    },  
    {
     id: 'vocab_009',
     level: 'N2',
