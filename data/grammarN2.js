@@ -1,4 +1,3 @@
-// 想增加新语法，只需要在数组中继续追加同样结构的对象即可。
 export const grammarN2 = [
   {
     id: 'gram_001',
@@ -78,11 +77,12 @@ export const grammarN2 = [
     pattern: '〜ものの',
     meaning: '虽然…但是…',
     examples: [
-      { jp: '説明は受けたものの、まだ少し不安だ。', cn: '虽然听过说明，但还是有点不安。' }
- ]
+      { jp: '説明は受けたものの、まだ少し不安だ。', cn: '虽然听过说明，但还是有点不安。' },
+      { jp: '勉強したものの、あまり自信がない。', cn: '虽然学了，但不太有自信。' }
+    ]
   },
   {
-    id: 'gram_009',
+    id: 'gram_010',
     level: 'N2',
     pattern: '〜わけがない',
     meaning: '不可能…；绝对不…',
@@ -91,12 +91,18 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_010',
+    id: 'gram_011',
     level: 'N2',
     pattern: '〜おかげで',
     meaning: '托…的福；多亏…',
     examples: [
-      { jp: '友人のおかげでいい仕事が見つかった。', cn: '多亏朋友找到了好工作。' }
+      { jp: '友人のおかげでいい仕事が見つかった。', cn: '多亏朋友找到了好工作。' },
+      { jp: '友達のおかげで合格できた。', cn: '多亏朋友我才合格。' }
+    ]
+  },
+  {
+    id: 'gram_012',
+    level: 'N2',
     pattern: '〜とは限らない',
     meaning: '未必…；不一定…',
     examples: [
@@ -104,12 +110,18 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_011',
+    id: 'gram_013',
     level: 'N2',
     pattern: '〜にしては',
-    meaning: '就…而言并不…',
+    meaning: '就…而言并不…；就…来说却…',
     examples: [
-      { jp: '初めてにしてはよくできています。', cn: '作为第一次来说已经做得很好了。' }
+      { jp: '初めてにしてはよくできています。', cn: '作为第一次来说已经做得很好了。' },
+      { jp: '初めてにしては、よくできました。', cn: '就算是第一次，也做得不错了。' }
+    ]
+  },
+  {
+    id: 'gram_014',
+    level: 'N2',
     pattern: '〜ということだ',
     meaning: '也就是说…；听说…',
     examples: [
@@ -117,12 +129,17 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_012',
+    id: 'gram_015',
     level: 'N2',
     pattern: '〜わけにはいかない',
     meaning: '不能；不便于…',
     examples: [
       { jp: 'みんなが待っているので休むわけにはいかない。', cn: '大家都在等，不能休息。' }
+    ]
+  },
+  {
+    id: 'gram_016',
+    level: 'N2',
     pattern: '〜ように',
     meaning: '为了…；按照…那样…',
     examples: [
@@ -130,12 +147,17 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_013',
+    id: 'gram_017',
     level: 'N2',
     pattern: '〜ばかりか',
     meaning: '不仅…而且…',
     examples: [
       { jp: '彼は遅刻ばかりか宿題も出していない。', cn: '他不止迟到，连作业都没交。' }
+    ]
+  },
+  {
+    id: 'gram_018',
+    level: 'N2',
     pattern: '〜に対して',
     meaning: '对…；与…相对',
     examples: [
@@ -143,7 +165,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_014',
+    id: 'gram_019',
     level: 'N2',
     pattern: '〜に関して',
     meaning: '关于…；就…而言',
@@ -152,7 +174,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_015',
+    id: 'gram_020',
     level: 'N2',
     pattern: '〜を通じて／〜を通して',
     meaning: '通过…；经由…',
@@ -161,7 +183,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_016',
+    id: 'gram_021',
     level: 'N2',
     pattern: '〜として',
     meaning: '作为…；以…的身份',
@@ -170,7 +192,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_017',
+    id: 'gram_022',
     level: 'N2',
     pattern: '〜において',
     meaning: '在…；在…方面',
@@ -179,7 +201,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_018',
+    id: 'gram_023',
     level: 'N2',
     pattern: '〜にわたって',
     meaning: '长达…；涉及…范围',
@@ -188,7 +210,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_019',
+    id: 'gram_024',
     level: 'N2',
     pattern: '〜をきっかけに',
     meaning: '以…为契机；从…开始',
@@ -197,7 +219,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_020',
+    id: 'gram_025',
     level: 'N2',
     pattern: '〜以来',
     meaning: '自从…以来',
@@ -206,7 +228,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_021',
+    id: 'gram_026',
     level: 'N2',
     pattern: '〜さえ〜ば',
     meaning: '只要…就…',
@@ -215,7 +237,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_022',
+    id: 'gram_027',
     level: 'N2',
     pattern: '〜ほど',
     meaning: '到…的程度；越…越…',
@@ -224,7 +246,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_023',
+    id: 'gram_028',
     level: 'N2',
     pattern: '〜くらい／〜ぐらい',
     meaning: '大约…；…程度',
@@ -233,7 +255,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_024',
+    id: 'gram_029',
     level: 'N2',
     pattern: '〜など',
     meaning: '…之类；什么的',
@@ -242,7 +264,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_025',
+    id: 'gram_030',
     level: 'N2',
     pattern: '〜にとって',
     meaning: '对…来说',
@@ -251,16 +273,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_026',
-    level: 'N2',
-    pattern: '〜おかげで',
-    meaning: '托…的福；多亏…',
-    examples: [
-      { jp: '友達のおかげで合格できた。', cn: '多亏朋友我才合格。' }
-    ]
-  },
-  {
-    id: 'gram_027',
+    id: 'gram_031',
     level: 'N2',
     pattern: '〜せいで',
     meaning: '都怪…；因为…（导致坏结果）',
@@ -269,7 +282,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_028',
+    id: 'gram_032',
     level: 'N2',
     pattern: '〜にすぎない',
     meaning: '不过是…而已',
@@ -278,16 +291,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_029',
-    level: 'N2',
-    pattern: '〜にしては',
-    meaning: '就…来说，却…',
-    examples: [
-      { jp: '初めてにしては、よくできました。', cn: '就算是第一次，也做得不错了。' }
-    ]
-  },
-  {
-    id: 'gram_030',
+    id: 'gram_033',
     level: 'N2',
     pattern: '〜にしても',
     meaning: '即使…也…；就算…',
@@ -296,7 +300,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_031',
+    id: 'gram_034',
     level: 'N2',
     pattern: '〜一方だ',
     meaning: '越来越…；一味地…',
@@ -305,7 +309,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_032',
+    id: 'gram_035',
     level: 'N2',
     pattern: '〜どころか',
     meaning: '别说…连…都…；不是…反而…',
@@ -314,7 +318,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_033',
+    id: 'gram_036',
     level: 'N2',
     pattern: '〜というより',
     meaning: '与其说…不如说…',
@@ -323,7 +327,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_034',
+    id: 'gram_037',
     level: 'N2',
     pattern: '〜における',
     meaning: '在…的；…中的（连体用法）',
@@ -332,7 +336,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_035',
+    id: 'gram_038',
     level: 'N2',
     pattern: '〜にこたえて',
     meaning: '响应…；按照…（期待、要求）',
@@ -341,7 +345,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_036',
+    id: 'gram_039',
     level: 'N2',
     pattern: '〜に沿って',
     meaning: '沿着…；按照…',
@@ -350,7 +354,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_037',
+    id: 'gram_040',
     level: 'N2',
     pattern: '〜を中心に',
     meaning: '以…为中心；主要围绕…',
@@ -359,7 +363,7 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_038',
+    id: 'gram_041',
     level: 'N2',
     pattern: '〜をはじめ',
     meaning: '以…为首；首先是…',
@@ -368,21 +372,12 @@ export const grammarN2 = [
     ]
   },
   {
-    id: 'gram_039',
+    id: 'gram_042',
     level: 'N2',
     pattern: '〜ものだから／〜もので',
     meaning: '因为…（多为辩解、主观理由）',
     examples: [
       { jp: '急いでいたもので、挨拶もしないで帰ってしまいました。', cn: '因为当时很急，就没打招呼就回去了。' }
-    ]
-  },
-  {
-    id: 'gram_040',
-    level: 'N2',
-    pattern: '〜ものの',
-    meaning: '虽然…但是…',
-    examples: [
-      { jp: '勉強したものの、あまり自信がない。', cn: '虽然学了，但不太有自信。' }
     ]
   }
 ];
