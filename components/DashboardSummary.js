@@ -11,6 +11,8 @@ export default function DashboardSummary({
   encouragement,
   streakDays,
   streakLevel,
+  todayLabel,
+  examCountdown,
   todayCompleted,
   studyDone,
   quizDone,
@@ -25,8 +27,17 @@ export default function DashboardSummary({
   return (
     <div className="section" style={{ position: 'relative', overflow: 'hidden' }}>
       <div className={styles.heroCard}>
+        <div className={styles.heroPills}>
+          <span className={styles.heroBadge}>JLPT N2 ・ 小雨的练习桌</span>
+          <div className={styles.dateRow}>
+            <span className={styles.datePill}>今天：{todayLabel}</span>
+            <span className={`${styles.datePill} ${styles.datePillAccent}`}>
+              距离 2026/7/6 考试还剩 {examCountdown} 天
+            </span>
+          </div>
+        </div>
+
         <div className={styles.heroTextBlock}>
-          <div className={styles.heroBadge}>JLPT N2・和小雨一起</div>
           <div className={styles.greeting}>小雨的 N2 学习桌</div>
           <div className={styles.encourage}>{encouragement}</div>
           <div className={styles.heroNote}>
@@ -42,10 +53,6 @@ export default function DashboardSummary({
               <button className={`${styles.ctaAction} ${styles.ctaSecondary}`} onClick={onStartQuiz}>开始测试</button>
             </div>
           </div>
-        </div>
-        <div className={styles.heroIllustration}>
-          <img src="/hero-illustration.svg" alt="小雨的简约学习插画" />
-          <div className={styles.heroSpot} />
         </div>
       </div>
 
