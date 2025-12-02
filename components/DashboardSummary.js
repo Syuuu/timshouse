@@ -32,9 +32,15 @@ export default function DashboardSummary({
           <div className={styles.heroNote}>
             每日 10 分钟，温柔巩固词汇与语法，稳步靠近 N2 目标。
           </div>
-          <div className={styles.ctaRow}>
-            <button className={`${styles.ctaButton} primary-button`} onClick={onStartStudy}>开始学习</button>
-            <button className={`${styles.secondaryButton} ghost-button`} onClick={onStartQuiz}>开始测试</button>
+          <div className={styles.ctaPanel}>
+            <div className={styles.ctaLegend}>
+              <div className={styles.ctaTitle}>今日主线</div>
+              <div className="subtle-text">先学后测，完整完成算作今日达成</div>
+            </div>
+            <div className={styles.ctaButtons}>
+              <button className={`${styles.ctaAction} ${styles.ctaPrimary}`} onClick={onStartStudy}>开始学习</button>
+              <button className={`${styles.ctaAction} ${styles.ctaSecondary}`} onClick={onStartQuiz}>开始测试</button>
+            </div>
           </div>
         </div>
         <div className={styles.heroIllustration}>
