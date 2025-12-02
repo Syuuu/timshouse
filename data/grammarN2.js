@@ -79,7 +79,8 @@ export const grammarN2 = [
     meaning: '虽然…但是…',
     examples: [
       { jp: '説明は受けたものの、まだ少し不安だ。', cn: '虽然听过说明，但还是有点不安。' }
-
+ ]
+  },
   {
     id: 'gram_009',
     level: 'N2',
