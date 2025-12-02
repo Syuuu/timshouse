@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 export default function StudySession({ cards, onRate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const remainingCards = useMemo(() => cards.filter((c) => !c.completed), [cards]);
   const currentCard = remainingCards[currentIndex] || null;
@@ -32,6 +33,30 @@ export default function StudySession({ cards, onRate }) {
     }
   };
 
+  const handleSpeak = () => {
+    if (!currentCard || currentCard.type !== 'vocab') return;
+    if (typeof window === 'undefined' || !window.speechSynthesis) return;
+
+    // 尽量让声音更自然，选择日语语音并设置柔和的语速和音调
+    const utter = new SpeechSynthesisUtterance(currentCard.word);
+    utter.lang = 'ja-JP';
+    utter.rate = 0.95;
+    utter.pitch = 1.05;
+
+    const voices = window.speechSynthesis.getVoices();
+    const jpVoice = voices.find((v) => v.lang === 'ja-JP' || v.name.toLowerCase().includes('japanese'));
+    if (jpVoice) {
+      utter.voice = jpVoice;
+    }
+
+    utter.onstart = () => setIsSpeaking(true);
+    utter.onend = () => setIsSpeaking(false);
+    utter.onerror = () => setIsSpeaking(false);
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  };
+
   if (!cards || cards.length === 0) {
     return <div className="section">今日没有需要学习的内容，可以留一点时间给自己放松。</div>;
   }
@@ -56,8 +81,31 @@ export default function StudySession({ cards, onRate }) {
         </div>
         {currentCard.type === 'vocab' ? (
           <div>
-            <h3 style={{ marginBottom: 4 }}>{currentCard.word}（{currentCard.reading}）</h3>
-            {!showAnswer && <p className="subtle-text">点击「显示答案」看看意思和例句</p>}
+            <div className="flex-row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div>
+                <h3 style={{ marginBottom: 2 }}>{currentCard.word}（{currentCard.reading}）</h3>
+                <p className="subtle-text" style={{ marginTop: 2 }}>点击「显示答案」看看意思和例句</p>
+              </div>
+              <button
+                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                onClick={handleSpeak}
+                aria-label="播放单词发音"
+                title="播放发音"
+              >
+                <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    <path
+                      d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </button>
+            </div>
             {showAnswer && (
               <div>
                 <p style={{ fontWeight: 700 }}>{currentCard.meaning}</p>
