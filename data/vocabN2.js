@@ -80,6 +80,14 @@ export const vocabN2 = [
       { jp: '社会に貢献できる仕事をしたい。', cn: '想做能贡献社会的工作。' }
     ]
   },
+  {
+    id: 'vocab_009',
+    level: 'N2',
+    word: '予想',
+    reading: 'よそう',
+    meaning: '预想；推测',
+    examples: [
+      { jp: '試験の結果を予想してみた。', cn: '试着预想了一下考试结果。' }
    {
     id: 'vocab_009',
     level: 'N2',
@@ -93,6 +101,11 @@ export const vocabN2 = [
   {
     id: 'vocab_010',
     level: 'N2',
+    word: '候補',
+    reading: 'こうほ',
+    meaning: '候选；备选',
+    examples: [
+      { jp: '旅行先の候補を三つに絞った。', cn: '把旅行目的地的候选缩小到了三个。' }
     word: '得意',
     reading: 'とくい',
     meaning: '拿手；得意',
@@ -103,6 +116,11 @@ export const vocabN2 = [
   {
     id: 'vocab_011',
     level: 'N2',
+    word: '省く',
+    reading: 'はぶく',
+    meaning: '省去；省略',
+    examples: [
+      { jp: '無駄な工程を省いて時間を節約する。', cn: '省去无用的工序来节约时间。' }
     word: '遠慮',
     reading: 'えんりょ',
     meaning: '客气；顾虑',
@@ -113,6 +131,11 @@ export const vocabN2 = [
   {
     id: 'vocab_012',
     level: 'N2',
+    word: '承る',
+    reading: 'うけたまわる',
+    meaning: '恭敬地接受；听取',
+    examples: [
+      { jp: 'ご要望は確かに承りました。', cn: '您的要求已经恭敬地收下了。' }
     word: '配慮',
     reading: 'はいりょ',
     meaning: '照顾，关照',
@@ -123,6 +146,11 @@ export const vocabN2 = [
   {
     id: 'vocab_013',
     level: 'N2',
+    word: '延長',
+    reading: 'えんちょう',
+    meaning: '延长；拉长',
+    examples: [
+      { jp: '会議が延長されて帰りが遅くなった。', cn: '会议延长了，回家时间变晚了。' }
     word: '姿勢',
     reading: 'しせい',
     meaning: '姿势；态度',
@@ -133,6 +161,11 @@ export const vocabN2 = [
   {
     id: 'vocab_014',
     level: 'N2',
+    word: '見直す',
+    reading: 'みなおす',
+    meaning: '重新审视；重新考虑',
+    examples: [
+      { jp: '計画を見直して改善点を探す。', cn: '重新审视计划，寻找改进点。' }
     word: '傾向',
     reading: 'けいこう',
     meaning: '倾向，趋势',
@@ -143,6 +176,11 @@ export const vocabN2 = [
   {
     id: 'vocab_015',
     level: 'N2',
+    word: '応援',
+    reading: 'おうえん',
+    meaning: '声援；支持',
+    examples: [
+      { jp: '大会で友達を応援しに行った。', cn: '去比赛现场为朋友加油。' }
     word: '影響',
     reading: 'えいきょう',
     meaning: '影响',
@@ -153,6 +191,11 @@ export const vocabN2 = [
   {
     id: 'vocab_016',
     level: 'N2',
+    word: '取引',
+    reading: 'とりひき',
+    meaning: '交易；往来',
+    examples: [
+      { jp: '新しい会社と取引を始めた。', cn: '开始和一家新公司进行交易。' }
     word: '事情',
     reading: 'じじょう',
     meaning: '缘由，情况',
@@ -163,6 +206,11 @@ export const vocabN2 = [
   {
     id: 'vocab_017',
     level: 'N2',
+    word: '作成',
+    reading: 'さくせい',
+    meaning: '制作；撰写',
+    examples: [
+      { jp: '資料を作成して明日提出します。', cn: '制作好资料明天提交。' }
     word: '事情',
     reading: 'こと',
     meaning: '事情（抽象地说“事、情况”）',
@@ -173,6 +221,11 @@ export const vocabN2 = [
   {
     id: 'vocab_018',
     level: 'N2',
+    word: '改善',
+    reading: 'かいぜん',
+    meaning: '改善；改进',
+    examples: [
+      { jp: '生活習慣を改善したい。', cn: '想改善生活习惯。' }
     word: '疑問',
     reading: 'ぎもん',
     meaning: '疑问，问题点',
@@ -183,6 +236,11 @@ export const vocabN2 = [
   {
     id: 'vocab_019',
     level: 'N2',
+    word: '許可',
+    reading: 'きょか',
+    meaning: '许可；允许',
+    examples: [
+      { jp: '部屋の使用には許可が必要です。', cn: '使用房间需要得到许可。' }
     word: '変更',
     reading: 'へんこう',
     meaning: '变更，修改',
@@ -193,6 +251,11 @@ export const vocabN2 = [
   {
     id: 'vocab_020',
     level: 'N2',
+    word: '余裕',
+    reading: 'よゆう',
+    meaning: '充裕；从容',
+    examples: [
+      { jp: '時間に余裕を持って行動してください。', cn: '请留有余裕地行动。' }
     word: '成長',
     reading: 'せいちょう',
     meaning: '成长，发展',
@@ -203,6 +266,11 @@ export const vocabN2 = [
   {
     id: 'vocab_021',
     level: 'N2',
+    word: '目標',
+    reading: 'もくひょう',
+    meaning: '目标；方向',
+    examples: [
+      { jp: '今年の目標を紙に書いて貼った。', cn: '把今年的目标写在纸上贴起来了。' }
     word: '成績',
     reading: 'せいせき',
     meaning: '成绩，成果',
@@ -213,6 +281,11 @@ export const vocabN2 = [
   {
     id: 'vocab_022',
     level: 'N2',
+    word: '自信',
+    reading: 'じしん',
+    meaning: '自信；信心',
+    examples: [
+      { jp: '練習を重ねて自信がついた。', cn: '反复练习后有了自信。' }
     word: '可能性',
     reading: 'かのうせい',
     meaning: '可能性',
@@ -223,6 +296,11 @@ export const vocabN2 = [
   {
     id: 'vocab_023',
     level: 'N2',
+    word: 'こだわる',
+    reading: 'こだわる',
+    meaning: '讲究；执着',
+    examples: [
+      { jp: '素材にこだわって料理を作る。', cn: '在意食材的品质来做料理。' }
     word: '割合',
     reading: 'わりあい',
     meaning: '比例；相对来说',

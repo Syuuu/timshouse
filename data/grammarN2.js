@@ -72,6 +72,13 @@ export const grammarN2 = [
       { jp: '彼は忘れっぽいから注意してね。', cn: '他很健忘，要注意哦。' }
     ]
   },
+  {
+    id: 'gram_009',
+    level: 'N2',
+    pattern: '〜ものの',
+    meaning: '虽然…但是…',
+    examples: [
+      { jp: '説明は受けたものの、まだ少し不安だ。', cn: '虽然听过说明，但还是有点不安。' }
 
   {
     id: 'gram_009',
@@ -85,6 +92,10 @@ export const grammarN2 = [
   {
     id: 'gram_010',
     level: 'N2',
+    pattern: '〜おかげで',
+    meaning: '托…的福；多亏…',
+    examples: [
+      { jp: '友人のおかげでいい仕事が見つかった。', cn: '多亏朋友找到了好工作。' }
     pattern: '〜とは限らない',
     meaning: '未必…；不一定…',
     examples: [
@@ -94,6 +105,10 @@ export const grammarN2 = [
   {
     id: 'gram_011',
     level: 'N2',
+    pattern: '〜にしては',
+    meaning: '就…而言并不…',
+    examples: [
+      { jp: '初めてにしてはよくできています。', cn: '作为第一次来说已经做得很好了。' }
     pattern: '〜ということだ',
     meaning: '也就是说…；听说…',
     examples: [
@@ -103,6 +118,10 @@ export const grammarN2 = [
   {
     id: 'gram_012',
     level: 'N2',
+    pattern: '〜わけにはいかない',
+    meaning: '不能；不便于…',
+    examples: [
+      { jp: 'みんなが待っているので休むわけにはいかない。', cn: '大家都在等，不能休息。' }
     pattern: '〜ように',
     meaning: '为了…；按照…那样…',
     examples: [
@@ -112,6 +131,10 @@ export const grammarN2 = [
   {
     id: 'gram_013',
     level: 'N2',
+    pattern: '〜ばかりか',
+    meaning: '不仅…而且…',
+    examples: [
+      { jp: '彼は遅刻ばかりか宿題も出していない。', cn: '他不止迟到，连作业都没交。' }
     pattern: '〜に対して',
     meaning: '对…；与…相对',
     examples: [

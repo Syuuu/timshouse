@@ -23,15 +23,25 @@ export default function DashboardSummary({
     : '今天还没学习完成哦（需要完成学习卡片和小测试）';
 
   return (
-    <div className="section">
-      <div className={styles.header}>
-        <div>
+    <div className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+      <div className={styles.heroCard}>
+        <div className={styles.heroTextBlock}>
+          <div className={styles.heroBadge}>JLPT N2・和小雨一起</div>
           <div className={styles.greeting}>小雨的 N2 学习桌</div>
           <div className={styles.encourage}>{encouragement}</div>
+          <div className={styles.heroTags}>
+            <span className={styles.heroTag}>柔和节奏</span>
+            <span className={styles.heroTag}>卡片练习</span>
+            <span className={styles.heroTag}>轻量测试</span>
+          </div>
+          <div className="flex-row" style={{ marginTop: 12 }}>
+            <button className="primary-button" onClick={onStartStudy}>开始学习</button>
+            <button className="ghost-button" onClick={onStartQuiz}>开始测试</button>
+          </div>
         </div>
-        <div className="flex-row">
-          <button className="primary-button" onClick={onStartStudy}>开始学习</button>
-          <button className="primary-button" onClick={onStartQuiz}>开始测试</button>
+        <div className={styles.heroIllustration}>
+          <img src="/hero-illustration.svg" alt="小雨的可爱学习插画" />
+          <div className={styles.heroBubble} />
         </div>
       </div>
 
@@ -48,19 +58,19 @@ export default function DashboardSummary({
         <div className="section-title">今日任务</div>
         <div className={styles.taskGrid}>
           <div className={styles.taskCard}>
-            <div className="subtle-text">新单词</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>🌸</span>新单词</div>
             <div className={styles.taskNumber}>{summary.newVocab}</div>
           </div>
           <div className={styles.taskCard}>
-            <div className="subtle-text">复习单词</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>📚</span>复习单词</div>
             <div className={styles.taskNumber}>{summary.reviewVocab}</div>
           </div>
           <div className={styles.taskCard}>
-            <div className="subtle-text">新语法</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>✨</span>新语法</div>
             <div className={styles.taskNumber}>{summary.newGrammar}</div>
           </div>
           <div className={styles.taskCard}>
-            <div className="subtle-text">复习语法</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>🧠</span>复习语法</div>
             <div className={styles.taskNumber}>{summary.reviewGrammar}</div>
           </div>
         </div>
