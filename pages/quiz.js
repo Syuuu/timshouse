@@ -6,9 +6,9 @@ import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
-// 将小测试的题量与每日学习保持一致：单词 15 题、语法 5 题
+// 将小测试的题量与每日学习保持一致：单词 15 题、语法 3 题
 const QUIZ_VOCAB_COUNT = 15;
-const QUIZ_GRAMMAR_COUNT = 5;
+const QUIZ_GRAMMAR_COUNT = 3;
 
 function getTodayString() {
   const today = new Date();

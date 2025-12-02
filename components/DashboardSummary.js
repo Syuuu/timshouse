@@ -29,19 +29,17 @@ export default function DashboardSummary({
           <div className={styles.heroBadge}>JLPT N2・和小雨一起</div>
           <div className={styles.greeting}>小雨的 N2 学习桌</div>
           <div className={styles.encourage}>{encouragement}</div>
-          <div className={styles.heroTags}>
-            <span className={styles.heroTag}>柔和节奏</span>
-            <span className={styles.heroTag}>卡片练习</span>
-            <span className={styles.heroTag}>轻量测试</span>
+          <div className={styles.heroNote}>
+            每日 10 分钟，温柔巩固词汇与语法，稳步靠近 N2 目标。
           </div>
-          <div className="flex-row" style={{ marginTop: 12 }}>
-            <button className="primary-button" onClick={onStartStudy}>开始学习</button>
-            <button className="ghost-button" onClick={onStartQuiz}>开始测试</button>
+          <div className={styles.ctaRow}>
+            <button className={`${styles.ctaButton} primary-button`} onClick={onStartStudy}>开始学习</button>
+            <button className={`${styles.secondaryButton} ghost-button`} onClick={onStartQuiz}>开始测试</button>
           </div>
         </div>
         <div className={styles.heroIllustration}>
-          <img src="/hero-illustration.svg" alt="小雨的可爱学习插画" />
-          <div className={styles.heroBubble} />
+          <img src="/hero-illustration.svg" alt="小雨的简约学习插画" />
+          <div className={styles.heroSpot} />
         </div>
       </div>
 

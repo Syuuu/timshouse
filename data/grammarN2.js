@@ -1,3 +1,4 @@
+// 想增加新语法，只需要在数组中继续追加同样结构的对象即可。
 export const grammarN2 = [
   {
     id: 'gram_001',

@@ -1,29 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="柔和粉色学习插画">
   <defs>
-    <linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop stop-color="#ffe7f3" offset="0%" />
-      <stop stop-color="#d7cffb" offset="100%" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff3fa" />
+      <stop offset="100%" stop-color="#dfe4ff" />
     </linearGradient>
-    <linearGradient id="b" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop stop-color="#ffc6dd" offset="0%" />
-      <stop stop-color="#c7e4ff" offset="100%" />
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe1f0" />
+      <stop offset="100%" stop-color="#e5ddff" />
     </linearGradient>
   </defs>
-  <rect x="0" y="0" width="320" height="200" rx="28" fill="url(#a)" />
-  <circle cx="80" cy="60" r="18" fill="#fff" opacity="0.5" />
-  <circle cx="250" cy="42" r="12" fill="#fff" opacity="0.35" />
-  <path d="M54 158c24-30 72-30 96-2 26 30 70 16 104-20" stroke="#f7bfe0" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.55" />
-  <g transform="translate(96 50)">
-    <path d="M64 16c-22-16-52-4-52 20 0 20 16 44 52 72 36-28 52-52 52-72 0-24-30-36-52-20Z" fill="url(#b)" stroke="#fff" stroke-width="6" stroke-linejoin="round" />
-    <circle cx="48" cy="58" r="6" fill="#fff" />
-    <circle cx="80" cy="58" r="6" fill="#fff" />
-    <path d="M52 76c6 6 20 6 26 0" stroke="#fff" stroke-width="6" stroke-linecap="round" />
-    <path d="M40 42c6-6 14-6 20 0" stroke="#f78db6" stroke-width="5" stroke-linecap="round" />
-    <path d="M72 42c6-6 14-6 20 0" stroke="#f78db6" stroke-width="5" stroke-linecap="round" />
-    <path d="M62 96c0 10-8 18-18 18s-16-6-20-12" stroke="#f4a5d0" stroke-width="6" stroke-linecap="round" />
-    <circle cx="26" cy="108" r="5" fill="#fff" />
-    <path d="M92 100c8 0 16 6 16 14s-8 14-16 14h-20" stroke="#fff" stroke-width="6" stroke-linecap="round" />
+  <rect width="320" height="200" rx="26" fill="url(#bg)" />
+  <circle cx="54" cy="52" r="14" fill="#ffcde5" opacity="0.35" />
+  <circle cx="276" cy="46" r="18" fill="#d9ccff" opacity="0.35" />
+  <path d="M30 150c28-34 84-40 124-6 34 28 80 26 108-4" fill="none" stroke="#f5c7e8" stroke-width="10" stroke-linecap="round" opacity="0.35" />
+  <g transform="translate(64 42)">
+    <rect x="6" y="8" width="180" height="116" rx="22" fill="#fff" opacity="0.78" />
+    <rect x="0" y="0" width="180" height="110" rx="20" fill="url(#card)" stroke="#fff" stroke-width="6" />
+    <rect x="18" y="26" width="120" height="12" rx="6" fill="#f0b9d6" opacity="0.9" />
+    <rect x="18" y="52" width="96" height="12" rx="6" fill="#cfd6ff" opacity="0.9" />
+    <rect x="18" y="78" width="64" height="12" rx="6" fill="#e4c6ff" opacity="0.9" />
+    <circle cx="152" cy="38" r="12" fill="#fff" stroke="#f0b9d6" stroke-width="4" />
+    <path d="M148 38c4-4 10-4 14 0" stroke="#f0b9d6" stroke-width="4" stroke-linecap="round" />
+    <rect x="140" y="66" width="24" height="24" rx="8" fill="#fff" opacity="0.95" />
+    <path d="M146 78l6 6 12-14" fill="none" stroke="#d59ef0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
   </g>
-  <path d="M44 120c16 18 40 22 62 12" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6" />
-  <path d="M226 68c14 0 24 10 24 24s-10 24-24 24-26-8-26-22c0-14 12-26 26-26Z" fill="#fff" opacity="0.45" />
+  <path d="M46 124c18 16 38 18 60 10" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.6" />
+  <path d="M224 78c13 0 22 10 22 22s-9 22-22 22-24-8-24-22c0-12 11-22 24-22Z" fill="#fff" opacity="0.55" />
 </svg>

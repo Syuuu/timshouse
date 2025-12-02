@@ -7,7 +7,7 @@ import { grammarN2 } from '../data/grammarN2';
 
 // 可以在这里修改每日新单词和新语法数量
 const DAILY_NEW_VOCAB = 15;
-const DAILY_NEW_GRAMMAR = 5;
+const DAILY_NEW_GRAMMAR = 3;
 
 function getTodayString() {
   const today = new Date();
