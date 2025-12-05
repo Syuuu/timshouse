@@ -56,6 +56,12 @@ export default function QuizPanel({ questions, onFinish }) {
 
   const answeredCount = Object.keys(selected).length;
 
+  const typeLabel = {
+    'vocab-meaning': '单词释义',
+    'vocab-sentence': '例句填空',
+    grammar: '语法填空'
+  };
+
   return (
     <div className="section">
       <div className="section-title">今日小测</div>
@@ -64,7 +70,7 @@ export default function QuizPanel({ questions, onFinish }) {
       {currentQuestion && (
         <div className="card" style={{ marginTop: 12 }}>
           <div className="badge-row">
-            <span className="tag">{currentQuestion.type === 'vocab' ? '单词四选一' : '语法选择题'}</span>
+            <span className="tag">{typeLabel[currentQuestion.type] || '选择题'}</span>
             <span className="tag">第 {currentIndex + 1} / {questions.length} 题</span>
           </div>
           <div style={{ marginTop: 8 }}>

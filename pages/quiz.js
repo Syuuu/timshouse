@@ -92,15 +92,31 @@ function maskGrammarSentence(example, pattern) {
   return `${jp}（请选择合适的语法填空）`;
 }
 
-function buildVocabQuestion(item, pool) {
+function buildVocabMeaningQuestion(item, pool) {
   const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.meaning), 3);
   const options = shuffle([item.meaning, ...wrongOptions]);
   return {
-    id: `q_${item.id}`,
-    type: 'vocab',
+    id: `q_meaning_${item.id}`,
+    type: 'vocab-meaning',
     prompt: `${item.word}（${item.reading}）是什么意思？`,
     options,
     answer: item.meaning
+  };
+}
+
+function buildVocabSentenceQuestion(item, pool) {
+  const example = item.examples[0] || { jp: '', cn: '' };
+  const base = example.jp || `${item.word} を使った例句`;
+  const masked = base.replace(item.word, '＿＿');
+  const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.word), 3);
+  const options = shuffle([item.word, ...wrongOptions]);
+  return {
+    id: `q_sentence_${item.id}`,
+    type: 'vocab-sentence',
+    prompt: masked,
+    extra: example.cn,
+    options,
+    answer: item.word
   };
 }
 
@@ -139,9 +155,15 @@ export default function QuizPage() {
     const vocabSource = vocabPool.length ? vocabPool : pickRandom(vocabN2, QUIZ_VOCAB_COUNT);
     const grammarSource = grammarPool.length ? grammarPool : pickRandom(grammarN2, QUIZ_GRAMMAR_COUNT);
 
-    const vocabQuestions = vocabSource.slice(0, QUIZ_VOCAB_COUNT).map((item) => buildVocabQuestion(item, vocabN2));
+    const vocabSlice = vocabSource.slice(0, QUIZ_VOCAB_COUNT);
+    const splitIndex = Math.ceil(QUIZ_VOCAB_COUNT * 0.6);
+    const meaningItems = vocabSlice.slice(0, splitIndex);
+    const sentenceItems = vocabSlice.slice(splitIndex);
+
+    const vocabMeaningQuestions = meaningItems.map((item) => buildVocabMeaningQuestion(item, vocabN2));
+    const vocabSentenceQuestions = sentenceItems.map((item) => buildVocabSentenceQuestion(item, vocabN2));
     const grammarQuestions = grammarSource.slice(0, QUIZ_GRAMMAR_COUNT).map((item) => buildGrammarQuestion(item, grammarN2));
-    setQuestions([...vocabQuestions, ...grammarQuestions]);
+    setQuestions(shuffle([...vocabMeaningQuestions, ...vocabSentenceQuestions, ...grammarQuestions]));
   }, [progress]);
 
   const handleFinish = (payload) => {
