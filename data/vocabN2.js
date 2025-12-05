@@ -739,5 +739,968 @@ export const vocabN2 = [
     examples: [
       { jp: 'コンビニに行くなら、ついでに牛乳を買ってきて。', cn: '要是去便利店的话，顺便买点牛奶回来。' }
     ]
+  },
+  {
+    id: 'vocab_075',
+    level: 'N2',
+    word: '扱う',
+    reading: 'あつかう',
+    meaning: '处理；对待；操作',
+    examples: [
+      { jp: '機械を丁寧に扱ってください。', cn: '请小心操作机器。' }
+    ]
+  },
+  {
+    id: 'vocab_076',
+    level: 'N2',
+    word: '至る',
+    reading: 'いたる',
+    meaning: '到达；至于',
+    examples: [
+      { jp: '結論に至るまでに時間がかかった。', cn: '花了很长时间才得出结论。' }
+    ]
+  },
+  {
+    id: 'vocab_077',
+    level: 'N2',
+    word: 'やり直す',
+    reading: 'やりなおす',
+    meaning: '重新做',
+    examples: [
+      { jp: '失敗したのでやり直すことにした。', cn: '因为失败了所以决定重做。' }
+    ]
+  },
+  {
+    id: 'vocab_078',
+    level: 'N2',
+    word: '慌てる',
+    reading: 'あわてる',
+    meaning: '慌张；急忙',
+    examples: [
+      { jp: '時間に遅れて慌てて家を出た。', cn: '因为迟到，慌忙地出门了。' }
+    ]
+  },
+  {
+    id: 'vocab_079',
+    level: 'N2',
+    word: '恐れる',
+    reading: 'おそれる',
+    meaning: '害怕；担心',
+    examples: [
+      { jp: '失敗を恐れて何もしないのはよくない。', cn: '因为害怕失败而什么都不做是不好的。' }
+    ]
+  },
+  {
+    id: 'vocab_080',
+    level: 'N2',
+    word: '限る',
+    reading: 'かぎる',
+    meaning: '限定；最好是…',
+    examples: [
+      { jp: '寒い日は鍋に限る。', cn: '冷天最适合吃火锅。' }
+    ]
+  },
+  {
+    id: 'vocab_081',
+    level: 'N2',
+    word: '求める',
+    reading: 'もとめる',
+    meaning: '请求；追求；购买',
+    examples: [
+      { jp: '質の高い情報を求めて検索した。', cn: '为了寻找高质量信息而搜索了。' }
+    ]
+  },
+  {
+    id: 'vocab_082',
+    level: 'N2',
+    word: '延ばす',
+    reading: 'のばす',
+    meaning: '延期；拉长；伸展',
+    examples: [
+      { jp: '会議の日程を延ばした。', cn: '把会议日程延后了。' }
+    ]
+  },
+  {
+    id: 'vocab_083',
+    level: 'N2',
+    word: '通じる',
+    reading: 'つうじる',
+    meaning: '通；理解；领会',
+    examples: [
+      { jp: '気持ちが相手に通じた。', cn: '对方理解了我的心意。' }
+    ]
+  },
+  {
+    id: 'vocab_084',
+    level: 'N2',
+    word: '伴う',
+    reading: 'ともなう',
+    meaning: '伴随；随着',
+    examples: [
+      { jp: '成長には痛みが伴う。', cn: '成长伴随着痛苦。' }
+    ]
+  },
+  {
+    id: 'vocab_085',
+    level: 'N2',
+    word: '望ましい',
+    reading: 'のぞましい',
+    meaning: '理想的；最好是…',
+    examples: [
+      { jp: '早寝早起きが望ましい。', cn: '早睡早起是最理想的。' }
+    ]
+  },
+  {
+    id: 'vocab_086',
+    level: 'N2',
+    word: 'やや',
+    reading: 'やや',
+    meaning: '稍微；有点',
+    examples: [
+      { jp: '今日はやや暑い。', cn: '今天有点热。' }
+    ]
+  },
+  {
+    id: 'vocab_087',
+    level: 'N2',
+    word: 'いずれ',
+    reading: 'いずれ',
+    meaning: '迟早；某个',
+    examples: [
+      { jp: 'いずれまた会えるだろう。', cn: '我们迟早还会再见的。' }
+    ]
+  },
+  {
+    id: 'vocab_088',
+    level: 'N2',
+    word: 'やがて',
+    reading: 'やがて',
+    meaning: '不久；最终',
+    examples: [
+      { jp: 'やがて春が来る。', cn: '不久春天就会到来。' }
+    ]
+  },
+  {
+    id: 'vocab_089',
+    level: 'N2',
+    word: 'ほぼ',
+    reading: 'ほぼ',
+    meaning: '大致；差不多',
+    examples: [
+      { jp: '仕事はほぼ終わった。', cn: '工作差不多完成了。' }
+    ]
+  },
+  {
+    id: 'vocab_090',
+    level: 'N2',
+    word: '一応',
+    reading: 'いちおう',
+    meaning: '暂且；姑且；大概',
+    examples: [
+      { jp: '一応確認しておいてください。', cn: '请姑且确认一下。' }
+    ]
+  },
+  {
+    id: 'vocab_091',
+    level: 'N2',
+    word: 'かえって',
+    reading: 'かえって',
+    meaning: '反而；却',
+    examples: [
+      { jp: '急ぐとかえって失敗する。', cn: '着急反而会失败。' }
+    ]
+  },
+  {
+    id: 'vocab_092',
+    level: 'N2',
+    word: 'むしろ',
+    reading: 'むしろ',
+    meaning: '不如说；倒是更…',
+    examples: [
+      { jp: '失敗から学ぶことがむしろ多い。', cn: '从失败中学到的反而更多。' }
+    ]
+  },
+  {
+    id: 'vocab_093',
+    level: 'N2',
+    word: 'せいぜい',
+    reading: 'せいぜい',
+    meaning: '最多；至多',
+    examples: [
+      { jp: '走ってもせいぜい10分だ。', cn: '跑过去最多也就10分钟。' }
+    ]
+  },
+  {
+    id: 'vocab_094',
+    level: 'N2',
+    word: 'まさに',
+    reading: 'まさに',
+    meaning: '正是；确实',
+    examples: [
+      { jp: 'これはまさに芸術だ。', cn: '这正是艺术。' }
+    ]
+  },
+  {
+    id: 'vocab_095',
+    level: 'N2',
+    word: 'やたらに',
+    reading: 'やたらに',
+    meaning: '随便地；过度地',
+    examples: [
+      { jp: 'やたらに人を批判してはいけない。', cn: '不能随便批评别人。' }
+    ]
+  },
+  {
+    id: 'vocab_096',
+    level: 'N2',
+    word: '以前',
+    reading: 'いぜん',
+    meaning: '以前；仍然',
+    examples: [
+      { jp: '以前として人気がある。', cn: '至今仍然很受欢迎。' }
+    ]
+  },
+  {
+    id: 'vocab_097',
+    level: 'N2',
+    word: '単なる',
+    reading: 'たんなる',
+    meaning: '只是…；仅仅',
+    examples: [
+      { jp: '単なる冗談だよ。', cn: '只是个玩笑啦。' }
+    ]
+  },
+  {
+    id: 'vocab_098',
+    level: 'N2',
+    word: '思い切って',
+    reading: 'おもいきって',
+    meaning: '下决心；大胆地',
+    examples: [
+      { jp: '思い切って辞めることにした。', cn: '下决心辞职了。' }
+    ]
+  },
+  {
+    id: 'vocab_099',
+    level: 'N2',
+    word: '一斉に',
+    reading: 'いっせいに',
+    meaning: '一起；同时',
+    examples: [
+      { jp: 'みんなが一斉に立ち上がった。', cn: '大家同时站了起来。' }
+    ]
+  },
+  {
+    id: 'vocab_100',
+    level: 'N2',
+    word: '徐々に',
+    reading: 'じょじょに',
+    meaning: '逐渐地；慢慢地',
+    examples: [
+      { jp: '気温が徐々に上がっている。', cn: '气温正在逐渐上升。' }
+    ]
+  },
+  {
+    id: 'vocab_101',
+    level: 'N2',
+    word: 'やがては',
+    reading: 'やがては',
+    meaning: '最终；早晚',
+    examples: [
+      { jp: '努力すればやがては成功する。', cn: '努力的话最终会成功。' }
+    ]
+  },
+  {
+    id: 'vocab_102',
+    level: 'N2',
+    word: '次第',
+    reading: 'しだい',
+    meaning: '一…就…；取决于…',
+    examples: [
+      { jp: '準備ができ次第、出発する。', cn: '准备好后就出发。' }
+    ]
+  },
+  {
+    id: 'vocab_103',
+    level: 'N2',
+    word: 'つながる',
+    reading: 'つながる',
+    meaning: '连接；导致',
+    examples: [
+      { jp: '努力は結果につながる。', cn: '努力会带来结果。' }
+    ]
+  },
+  {
+    id: 'vocab_104',
+    level: 'N2',
+    word: 'そろえる',
+    reading: 'そろえる',
+    meaning: '准备齐；整齐一致',
+    examples: [
+      { jp: '資料をそろえて提出した。', cn: '整齐地准备好资料后提交了。' }
+    ]
+  },
+  {
+    id: 'vocab_105',
+    level: 'N2',
+    word: '踏む',
+    reading: 'ふむ',
+    meaning: '踩；踏；经历',
+    examples: [
+      { jp: '基本を踏んでから応用する。', cn: '先掌握基础再应用。' }
+    ]
+  },
+  {
+    id: 'vocab_106',
+    level: 'N2',
+    word: 'はさむ',
+    reading: 'はさむ',
+    meaning: '夹；插入',
+    examples: [
+      { jp: '紙をファイルに挟んだ。', cn: '把纸夹进文件夹里。' }
+    ]
+  },
+  {
+    id: 'vocab_107',
+    level: 'N2',
+    word: 'しぼる',
+    reading: 'しぼる',
+    meaning: '挤；勒紧；缩减',
+    examples: [
+      { jp: '予算をしぼった。', cn: '缩减了预算。' }
+    ]
+  },
+  {
+    id: 'vocab_108',
+    level: 'N2',
+    word: '寄せる',
+    reading: 'よせる',
+    meaning: '靠近；聚集',
+    examples: [
+      { jp: '寄せられた意見をまとめた。', cn: '把收到的意见整理了。' }
+    ]
+  },
+  {
+    id: 'vocab_109',
+    level: 'N2',
+    word: '責める',
+    reading: 'せめる',
+    meaning: '责备；指责',
+    examples: [
+      { jp: '失敗を彼だけ責めるのは不公平だ。', cn: '只责备他一个人是不公平的。' }
+    ]
+  },
+  {
+    id: 'vocab_110',
+    level: 'N2',
+    word: '迫る',
+    reading: 'せまる',
+    meaning: '逼近；迫使',
+    examples: [
+      { jp: '締め切りが迫っている。', cn: '截止日期逼近了。' }
+    ]
+  },
+  {
+    id: 'vocab_111',
+    level: 'N2',
+    word: '砕く',
+    reading: 'くだく',
+    meaning: '打碎；挫折；通俗解释',
+    examples: [
+      { jp: '難しい話を砕いて説明した。', cn: '把难懂的内容通俗解释了。' }
+    ]
+  },
+  {
+    id: 'vocab_112',
+    level: 'N2',
+    word: '染める',
+    reading: 'そめる',
+    meaning: '染色；感染（思想）',
+    examples: [
+      { jp: '髪を赤く染めた。', cn: '把头发染成了红色。' }
+    ]
+  },
+  {
+    id: 'vocab_113',
+    level: 'N2',
+    word: '預かる',
+    reading: 'あずかる',
+    meaning: '保管；承担',
+    examples: [
+      { jp: '荷物を預かっておきます。', cn: '我会帮你保管行李。' }
+    ]
+  },
+  {
+    id: 'vocab_114',
+    level: 'N2',
+    word: '預ける',
+    reading: 'あずける',
+    meaning: '寄存；委托',
+    examples: [
+      { jp: '荷物を駅に預けた。', cn: '把行李寄存在车站了。' }
+    ]
+  },
+  {
+    id: 'vocab_115',
+    level: 'N2',
+    word: '支払う',
+    reading: 'しはらう',
+    meaning: '支付；付款',
+    examples: [
+      { jp: '料金を現金で支払った。', cn: '用现金支付了费用。' }
+    ]
+  },
+  {
+    id: 'vocab_116',
+    level: 'N2',
+    word: '訴える',
+    reading: 'うったえる',
+    meaning: '控诉；呼吁；诉说',
+    examples: [
+      { jp: '彼は不公平さを訴えた。', cn: '他控诉了不公平。' }
+    ]
+  },
+  {
+    id: 'vocab_117',
+    level: 'N2',
+    word: '奪う',
+    reading: 'うばう',
+    meaning: '夺去；抢夺',
+    examples: [
+      { jp: '注意を奪われた。', cn: '注意力被吸引走了。' }
+    ]
+  },
+  {
+    id: 'vocab_118',
+    level: 'N2',
+    word: '避ける',
+    reading: 'さける',
+    meaning: '避开；避免',
+    examples: [
+      { jp: '危険はできるだけ避けたい。', cn: '想尽可能避免危险。' }
+    ]
+  },
+  {
+    id: 'vocab_119',
+    level: 'N2',
+    word: '蓄える',
+    reading: 'たくわえる',
+    meaning: '储存；积累',
+    examples: [
+      { jp: '知識を蓄えることが大切だ。', cn: '积累知识是很重要的。' }
+    ]
+  },
+  {
+    id: 'vocab_120',
+    level: 'N2',
+    word: '憧れる',
+    reading: 'あこがれる',
+    meaning: '憧憬；向往',
+    examples: [
+      { jp: '都会の生活に憧れている。', cn: '向往都市生活。' }
+    ]
+  },
+
+  {
+    id: 'vocab_121',
+    level: 'N2',
+    word: '作業',
+    reading: 'さぎょう',
+    meaning: '作业；操作；工作',
+    examples: [
+      { jp: 'この作業には時間がかかる。', cn: '这项作业需要时间。' }
+    ]
+  },
+  {
+    id: 'vocab_122',
+    level: 'N2',
+    word: '指示',
+    reading: 'しじ',
+    meaning: '指示；指令',
+    examples: [
+      { jp: '先生の指示に従ってください。', cn: '请遵从老师的指示。' }
+    ]
+  },
+  {
+    id: 'vocab_123',
+    level: 'N2',
+    word: '応じる',
+    reading: 'おうじる',
+    meaning: '回应；根据…',
+    examples: [
+      { jp: '要求に応じて価格が変わる。', cn: '根据要求价格会变化。' }
+    ]
+  },
+  {
+    id: 'vocab_124',
+    level: 'N2',
+    word: '追加',
+    reading: 'ついか',
+    meaning: '追加；补充',
+    examples: [
+      { jp: '注文を追加した。', cn: '追加了订单。' }
+    ]
+  },
+  {
+    id: 'vocab_125',
+    level: 'N2',
+    word: '略す',
+    reading: 'りゃくす',
+    meaning: '省略；简写',
+    examples: [
+      { jp: '会社名を略して呼ぶ。', cn: '将公司名称简称呼叫。' }
+    ]
+  },
+  {
+    id: 'vocab_126',
+    level: 'N2',
+    word: '表す',
+    reading: 'あらわす',
+    meaning: '表示；表达',
+    examples: [
+      { jp: '感謝の気持ちを言葉で表す。', cn: '用语言表达感激之情。' }
+    ]
+  },
+  {
+    id: 'vocab_127',
+    level: 'N2',
+    word: '祝う',
+    reading: 'いわう',
+    meaning: '庆祝；祝贺',
+    examples: [
+      { jp: '友達の誕生日を祝った。', cn: '庆祝了朋友的生日。' }
+    ]
+  },
+  {
+    id: 'vocab_128',
+    level: 'N2',
+    word: '示す',
+    reading: 'しめす',
+    meaning: '出示；表示；指示',
+    examples: [
+      { jp: '資料で例を示した。', cn: '用资料举了例子。' }
+    ]
+  },
+  {
+    id: 'vocab_129',
+    level: 'N2',
+    word: '抱く',
+    reading: 'いだく',
+    meaning: '怀抱；怀有（感情）',
+    examples: [
+      { jp: '将来に希望を抱く。', cn: '对未来怀有希望。' }
+    ]
+  },
+  {
+    id: 'vocab_130',
+    level: 'N2',
+    word: '替える',
+    reading: 'かえる',
+    meaning: '更换；替换',
+    examples: [
+      { jp: '服を夏用に替えた。', cn: '换成了夏装。' }
+    ]
+  },
+  {
+    id: 'vocab_131',
+    level: 'N2',
+    word: '換える',
+    reading: 'かえる',
+    meaning: '交换（金钱、单位）',
+    examples: [
+      { jp: '外貨に換えた。', cn: '换成了外币。' }
+    ]
+  },
+  {
+    id: 'vocab_132',
+    level: 'N2',
+    word: '改める',
+    reading: 'あらためる',
+    meaning: '改正；重新；改变',
+    examples: [
+      { jp: '態度を改めるべきだ。', cn: '应该改变态度。' }
+    ]
+  },
+  {
+    id: 'vocab_133',
+    level: 'N2',
+    word: '加える',
+    reading: 'くわえる',
+    meaning: '加入；加上',
+    examples: [
+      { jp: '議論に新しい視点を加えた。', cn: '为讨论加入了新观点。' }
+    ]
+  },
+  {
+    id: 'vocab_134',
+    level: 'N2',
+    word: '浮かぶ',
+    reading: 'うかぶ',
+    meaning: '浮起；浮现（想法）',
+    examples: [
+      { jp: '突然アイデアが浮かんだ。', cn: '突然浮现了一个点子。' }
+    ]
+  },
+  {
+    id: 'vocab_135',
+    level: 'N2',
+    word: '務める',
+    reading: 'つとめる',
+    meaning: '担任；负责',
+    examples: [
+      { jp: '会長を務めている。', cn: '担任会长。' }
+    ]
+  },
+  {
+    id: 'vocab_136',
+    level: 'N2',
+    word: '発揮',
+    reading: 'はっき',
+    meaning: '发挥；展现',
+    examples: [
+      { jp: '能力を発揮できる場がない。', cn: '没有能发挥能力的场合。' }
+    ]
+  },
+  {
+    id: 'vocab_137',
+    level: 'N2',
+    word: '保護',
+    reading: 'ほご',
+    meaning: '保护；保育',
+    examples: [
+      { jp: '環境を保護する。', cn: '保护环境。' }
+    ]
+  },
+  {
+    id: 'vocab_138',
+    level: 'N2',
+    word: '修理',
+    reading: 'しゅうり',
+    meaning: '修理；维修',
+    examples: [
+      { jp: '自転車を修理した。', cn: '修理了自行车。' }
+    ]
+  },
+  {
+    id: 'vocab_139',
+    level: 'N2',
+    word: '性能',
+    reading: 'せいのう',
+    meaning: '性能；功能',
+    examples: [
+      { jp: 'このパソコンは性能が高い。', cn: '这台电脑性能很高。' }
+    ]
+  },
+  {
+    id: 'vocab_140',
+    level: 'N2',
+    word: '効く',
+    reading: 'きく',
+    meaning: '有效；起作用',
+    examples: [
+      { jp: 'この薬はよく効く。', cn: '这个药很有效。' }
+    ]
+  },
+  {
+    id: 'vocab_141',
+    level: 'N2',
+    word: '伸ばす',
+    reading: 'のばす',
+    meaning: '延长；伸长；发展',
+    examples: [
+      { jp: '髪を伸ばしている。', cn: '正在留长头发。' }
+    ]
+  },
+  {
+    id: 'vocab_142',
+    level: 'N2',
+    word: '減らす',
+    reading: 'へらす',
+    meaning: '减少；缩减',
+    examples: [
+      { jp: '無駄な支出を減らす。', cn: '减少无用开支。' }
+    ]
+  },
+  {
+    id: 'vocab_143',
+    level: 'N2',
+    word: '増す',
+    reading: 'ます',
+    meaning: '增加；增强',
+    examples: [
+      { jp: '不安が増してきた。', cn: '不安增加了。' }
+    ]
+  },
+  {
+    id: 'vocab_144',
+    level: 'N2',
+    word: '余計',
+    reading: 'よけい',
+    meaning: '多余；更加（反效果）',
+    examples: [
+      { jp: '言い訳すると余計怪しい。', cn: '解释反而更可疑。' }
+    ]
+  },
+  {
+    id: 'vocab_145',
+    level: 'N2',
+    word: '大胆',
+    reading: 'だいたん',
+    meaning: '大胆；大胆的',
+    examples: [
+      { jp: '大胆な考え方をする。', cn: '有大胆的想法。' }
+    ]
+  },
+  {
+    id: 'vocab_146',
+    level: 'N2',
+    word: 'わずか',
+    reading: 'わずか',
+    meaning: '仅仅；一点点',
+    examples: [
+      { jp: 'わずか5分で終わった。', cn: '仅仅用了五分钟就完成了。' }
+    ]
+  },
+  {
+    id: 'vocab_147',
+    level: 'N2',
+    word: '大幅',
+    reading: 'おおはば',
+    meaning: '大幅；大范围地',
+    examples: [
+      { jp: '値段が大幅に下がった。', cn: '价格大幅下降了。' }
+    ]
+  },
+  {
+    id: 'vocab_148',
+    level: 'N2',
+    word: '微妙',
+    reading: 'びみょう',
+    meaning: '微妙；不好说',
+    examples: [
+      { jp: 'この味は微妙だ。', cn: '这个味道有点微妙（不好说）。' }
+    ]
+  },
+  {
+    id: 'vocab_149',
+    level: 'N2',
+    word: '強力',
+    reading: 'きょうりょく',
+    meaning: '强力；有力',
+    examples: [
+      { jp: '強力なサポートが必要だ。', cn: '需要强有力的支持。' }
+    ]
+  },
+  {
+    id: 'vocab_150',
+    level: 'N2',
+    word: '怪しい',
+    reading: 'あやしい',
+    meaning: '可疑；奇怪；不可靠',
+    examples: [
+      { jp: 'その話は怪しい。', cn: '那话很可疑。' }
+    ]
+  },
+  {
+    id: 'vocab_151',
+    level: 'N2',
+    word: '乱暴',
+    reading: 'らんぼう',
+    meaning: '粗暴；粗鲁',
+    examples: [
+      { jp: '乱暴な言い方をしないで。', cn: '不要说话粗鲁。' }
+    ]
+  },
+  {
+    id: 'vocab_152',
+    level: 'N2',
+    word: '鋭い',
+    reading: 'するどい',
+    meaning: '锋利；敏锐；尖锐',
+    examples: [
+      { jp: '鋭い質問をされた。', cn: '被问了尖锐的问题。' }
+    ]
+  },
+  {
+    id: 'vocab_153',
+    level: 'N2',
+    word: '鈍い',
+    reading: 'にぶい',
+    meaning: '迟钝；不灵敏',
+    examples: [
+      { jp: '反応が鈍い。', cn: '反应迟钝。' }
+    ]
+  },
+  {
+    id: 'vocab_154',
+    level: 'N2',
+    word: '快適',
+    reading: 'かいてき',
+    meaning: '舒适；惬意',
+    examples: [
+      { jp: '快適な生活を送りたい。', cn: '想过舒适的生活。' }
+    ]
+  },
+  {
+    id: 'vocab_155',
+    level: 'N2',
+    word: '夢中',
+    reading: 'むちゅう',
+    meaning: '入迷；专心',
+    examples: [
+      { jp: 'ゲームに夢中になった。', cn: '沉迷于游戏。' }
+    ]
+  },
+  {
+    id: 'vocab_156',
+    level: 'N2',
+    word: '意外',
+    reading: 'いがい',
+    meaning: '意外；出乎意料',
+    examples: [
+      { jp: '意外な結末だった。', cn: '是个意想不到的结局。' }
+    ]
+  },
+  {
+    id: 'vocab_157',
+    level: 'N2',
+    word: '粗末',
+    reading: 'そまつ',
+    meaning: '粗糙；浪费；草率',
+    examples: [
+      { jp: '物を粗末にしてはいけない。', cn: '不能浪费东西。' }
+    ]
+  },
+  {
+    id: 'vocab_158',
+    level: 'N2',
+    word: '合法',
+    reading: 'ごうほう',
+    meaning: '合法',
+    examples: [
+      { jp: '合法な手続きで行う。', cn: '通过合法手续进行。' }
+    ]
+  },
+  {
+    id: 'vocab_159',
+    level: 'N2',
+    word: '平気',
+    reading: 'へいき',
+    meaning: '没事；不在乎',
+    examples: [
+      { jp: 'そんな冗談は平気だ。', cn: '那种玩笑无所谓。' }
+    ]
+  },
+  {
+    id: 'vocab_160',
+    level: 'N2',
+    word: '有利',
+    reading: 'ゆうり',
+    meaning: '有利；有好处',
+    examples: [
+      { jp: '条件が有利になった。', cn: '条件变得有利了。' }
+    ]
+  },
+  {
+    id: 'vocab_161',
+    level: 'N2',
+    word: '不利',
+    reading: 'ふり',
+    meaning: '不利；不利条件',
+    examples: [
+      { jp: '状況は不利だが諦めない。', cn: '情况不利但不放弃。' }
+    ]
+  },
+  {
+    id: 'vocab_162',
+    level: 'N2',
+    word: '不思議',
+    reading: 'ふしぎ',
+    meaning: '不可思议；奇怪',
+    examples: [
+      { jp: '不思議な現象を見た。', cn: '看到不可思议的现象。' }
+    ]
+  },
+  {
+    id: 'vocab_163',
+    level: 'N2',
+    word: '慎重',
+    reading: 'しんちょう',
+    meaning: '慎重；小心',
+    examples: [
+      { jp: '慎重に判断する。', cn: '慎重判断。' }
+    ]
+  },
+  {
+    id: 'vocab_164',
+    level: 'N2',
+    word: '余分',
+    reading: 'よぶん',
+    meaning: '多余；额外',
+    examples: [
+      { jp: '余分なお金を借りた。', cn: '借了额外的钱。' }
+    ]
+  },
+  {
+    id: 'vocab_165',
+    level: 'N2',
+    word: '単に',
+    reading: 'たんに',
+    meaning: '仅仅；只是',
+    examples: [
+      { jp: '単に興味があるだけだ。', cn: '只是有点兴趣而已。' }
+    ]
+  },
+  {
+    id: 'vocab_166',
+    level: 'N2',
+    word: 'いずれも',
+    reading: 'いずれも',
+    meaning: '无论哪个；都…',
+    examples: [
+      { jp: '候補はどれもいずれも優秀だ。', cn: '候选人无论哪个都很优秀。' }
+    ]
+  },
+  {
+    id: 'vocab_167',
+    level: 'N2',
+    word: '現在',
+    reading: 'げんざい',
+    meaning: '现在；目前',
+    examples: [
+      { jp: '現在の状況を説明する。', cn: '说明目前的情况。' }
+    ]
+  },
+  {
+    id: 'vocab_168',
+    level: 'N2',
+    word: '事前',
+    reading: 'じぜん',
+    meaning: '事前；提前',
+    examples: [
+      { jp: '事前に予約してください。', cn: '请提前预约。' }
+    ]
+  },
+  {
+    id: 'vocab_169',
+    level: 'N2',
+    word: '事後',
+    reading: 'じご',
+    meaning: '事后；之后',
+    examples: [
+      { jp: '事後対応が大切だ。', cn: '事后对应很重要。' }
+    ]
+  },
+  {
+    id: 'vocab_170',
+    level: 'N2',
+    word: '同様',
+    reading: 'どうよう',
+    meaning: '同样；一样',
+    examples: [
+      { jp: '今回も同様の結果になった。', cn: '这次也得出了同样的结果。' }
+    ]
   }
+
+
 ];
