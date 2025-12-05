@@ -6,9 +6,9 @@ import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
-// 将小测试的题量与每日学习保持一致：单词 15 题、语法 3 题
-const QUIZ_VOCAB_COUNT = 15;
-const QUIZ_GRAMMAR_COUNT = 3;
+// 作为兜底的题量：当日没有生成任务时使用（有任务时不做数量限制，复习+当日学习全部纳入小测）
+const QUIZ_VOCAB_FALLBACK = 15;
+const QUIZ_GRAMMAR_FALLBACK = 3;
 
 function getTodayString() {
   const today = new Date();
@@ -151,18 +151,17 @@ export default function QuizPage() {
     const today = progress.today?.date === getTodayString() ? progress.today : null;
     const vocabPool = today ? today.vocabIds.map((id) => vocabN2.find((v) => v.id === id)).filter(Boolean) : [];
     const grammarPool = today ? today.grammarIds.map((id) => grammarN2.find((g) => g.id === id)).filter(Boolean) : [];
+    const vocabSource = vocabPool.length ? vocabPool : pickRandom(vocabN2, QUIZ_VOCAB_FALLBACK);
+    const grammarSource = grammarPool.length ? grammarPool : pickRandom(grammarN2, QUIZ_GRAMMAR_FALLBACK);
 
-    const vocabSource = vocabPool.length ? vocabPool : pickRandom(vocabN2, QUIZ_VOCAB_COUNT);
-    const grammarSource = grammarPool.length ? grammarPool : pickRandom(grammarN2, QUIZ_GRAMMAR_COUNT);
-
-    const vocabSlice = vocabSource.slice(0, QUIZ_VOCAB_COUNT);
-    const splitIndex = Math.ceil(QUIZ_VOCAB_COUNT * 0.6);
-    const meaningItems = vocabSlice.slice(0, splitIndex);
-    const sentenceItems = vocabSlice.slice(splitIndex);
+    const vocabCount = vocabSource.length;
+    const meaningCount = Math.ceil((vocabCount || QUIZ_VOCAB_FALLBACK) * 0.6);
+    const meaningItems = vocabSource.slice(0, meaningCount);
+    const sentenceItems = vocabSource.slice(meaningCount);
 
     const vocabMeaningQuestions = meaningItems.map((item) => buildVocabMeaningQuestion(item, vocabN2));
     const vocabSentenceQuestions = sentenceItems.map((item) => buildVocabSentenceQuestion(item, vocabN2));
-    const grammarQuestions = grammarSource.slice(0, QUIZ_GRAMMAR_COUNT).map((item) => buildGrammarQuestion(item, grammarN2));
+    const grammarQuestions = grammarSource.map((item) => buildGrammarQuestion(item, grammarN2));
     setQuestions(shuffle([...vocabMeaningQuestions, ...vocabSentenceQuestions, ...grammarQuestions]));
   }, [progress]);
 
@@ -216,6 +215,8 @@ export default function QuizPage() {
         <div className="section-title">历史记录</div>
         <HistoryList history={progress?.history || []} />
       </div>
+
+      <footer className="app-footer">By Xixi · v1.1.1</footer>
     </div>
   );
 }

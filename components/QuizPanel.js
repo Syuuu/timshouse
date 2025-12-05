@@ -65,7 +65,7 @@ export default function QuizPanel({ questions, onFinish }) {
   return (
     <div className="section">
       <div className="section-title">今日小测</div>
-      <div className="subtle-text">题目以今日任务为主，数量不够会随机补充</div>
+      <div className="subtle-text">优先覆盖今日学习+复习的全部条目，若无任务再随机补充</div>
 
       {currentQuestion && (
         <div className="card" style={{ marginTop: 12 }}>

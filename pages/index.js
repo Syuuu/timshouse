@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import DashboardSummary from '../components/DashboardSummary';
 import StudySession from '../components/StudySession';
 import { vocabN2 } from '../data/vocabN2';
@@ -197,11 +197,33 @@ export default function Home() {
 
   const examCountdown = useMemo(() => daysUntilExam(), []);
 
-  useEffect(() => {
+  const refreshProgress = useCallback(() => {
     const loaded = loadProgress();
     const prepared = prepareToday(loaded);
     setProgress(prepared);
   }, []);
+
+  useEffect(() => {
+    refreshProgress();
+  }, [refreshProgress]);
+
+  useEffect(() => {
+    // 返回首页或标签页重新聚焦时，重新读取进度，确保「最近几天」和连续天数即时更新
+    const handleFocus = () => refreshProgress();
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') refreshProgress();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('storage', handleFocus);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('storage', handleFocus);
+    };
+  }, [refreshProgress]);
 
   const vocabMap = useMemo(() => buildMap(vocabN2), []);
   const grammarMap = useMemo(() => buildMap(grammarN2), []);
@@ -312,6 +334,8 @@ export default function Home() {
       <div id="study">
         <StudySession cards={studyCards} onRate={handleRate} />
       </div>
+
+      <footer className="app-footer">By Xixi · v1.1.1</footer>
     </div>
   );
 }
