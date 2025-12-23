@@ -7,8 +7,8 @@ import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
 // 作为兜底的题量：当日没有生成任务时使用（有任务时不做数量限制，复习+当日学习全部纳入小测）
-const QUIZ_VOCAB_FALLBACK = 15;
-const QUIZ_GRAMMAR_FALLBACK = 3;
+const QUIZ_VOCAB_FALLBACK = 20;
+const QUIZ_GRAMMAR_FALLBACK = 10;
 
 function getTodayString() {
   const today = new Date();

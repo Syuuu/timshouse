@@ -8,6 +8,7 @@ import { grammarN2 } from '../data/grammarN2';
 // 可以在这里修改每日新单词和新语法数量
 const DAILY_NEW_VOCAB = 15;
 const DAILY_NEW_GRAMMAR = 3;
+const MAX_DAILY_ITEMS = 30;
 
 function getTodayString() {
   const today = new Date();
@@ -38,6 +39,10 @@ function prepareBlankProgress() {
   return {
     vocabStatus: {},
     grammarStatus: {},
+    pending: {
+      vocabIds: [],
+      grammarIds: []
+    },
     today: {
       date: '',
       vocabIds: [],
@@ -63,6 +68,7 @@ function loadProgress() {
       ...parsed,
       vocabStatus: parsed.vocabStatus || {},
       grammarStatus: parsed.grammarStatus || {},
+      pending: parsed.pending || blank.pending,
       today: { ...blank.today, ...(parsed.today || {}) },
       history: parsed.history || []
     };
@@ -151,6 +157,13 @@ function prepareToday(progress) {
     return progress;
   }
 
+  const previousToday = progress.today || {};
+  const shouldCarryOver = previousToday.date && previousToday.date !== today && !(previousToday.studyDone && previousToday.quizDone);
+  const carryoverVocab = shouldCarryOver ? previousToday.vocabIds : [];
+  const carryoverGrammar = shouldCarryOver ? previousToday.grammarIds : [];
+
+  const pending = progress.pending || { vocabIds: [], grammarIds: [] };
+
   const dueVocab = Object.entries(progress.vocabStatus)
     .filter(([, value]) => value.nextReviewDate && value.nextReviewDate <= today)
     .map(([id]) => id);
@@ -158,11 +171,37 @@ function prepareToday(progress) {
     .filter(([, value]) => value.nextReviewDate && value.nextReviewDate <= today)
     .map(([id]) => id);
 
-  const newVocab = vocabN2.filter((item) => !progress.vocabStatus[item.id]).slice(0, DAILY_NEW_VOCAB);
-  const newGrammar = grammarN2.filter((item) => !progress.grammarStatus[item.id]).slice(0, DAILY_NEW_GRAMMAR);
+  const newVocabCandidates = vocabN2.filter((item) => !progress.vocabStatus[item.id]).slice(0, DAILY_NEW_VOCAB * 3);
+  const newGrammarCandidates = grammarN2.filter((item) => !progress.grammarStatus[item.id]).slice(0, DAILY_NEW_GRAMMAR * 3);
 
-  const todayVocab = [...dueVocab, ...newVocab.map((item) => item.id)];
-  const todayGrammar = [...dueGrammar, ...newGrammar.map((item) => item.id)];
+  const queue = [];
+  const pushUnique = (type, id) => {
+    if (!queue.some((item) => item.type === type && item.id === id)) {
+      queue.push({ type, id });
+    }
+  };
+
+  pending.vocabIds.forEach((id) => pushUnique('vocab', id));
+  pending.grammarIds.forEach((id) => pushUnique('grammar', id));
+  carryoverVocab.forEach((id) => pushUnique('vocab', id));
+  carryoverGrammar.forEach((id) => pushUnique('grammar', id));
+  dueVocab.forEach((id) => pushUnique('vocab', id));
+  dueGrammar.forEach((id) => pushUnique('grammar', id));
+  newVocabCandidates.forEach((item) => pushUnique('vocab', item.id));
+  newGrammarCandidates.forEach((item) => pushUnique('grammar', item.id));
+
+  const selected = queue.slice(0, MAX_DAILY_ITEMS);
+  const deferred = queue.slice(MAX_DAILY_ITEMS);
+
+  const todayVocab = selected.filter((item) => item.type === 'vocab').map((item) => item.id);
+  const todayGrammar = selected.filter((item) => item.type === 'grammar').map((item) => item.id);
+  const nextPending = {
+    vocabIds: deferred.filter((item) => item.type === 'vocab').map((item) => item.id),
+    grammarIds: deferred.filter((item) => item.type === 'grammar').map((item) => item.id)
+  };
+
+  const newVocab = vocabN2.filter((item) => todayVocab.includes(item.id) && !progress.vocabStatus[item.id]);
+  const newGrammar = grammarN2.filter((item) => todayGrammar.includes(item.id) && !progress.grammarStatus[item.id]);
 
   const updatedStatus = { ...progress };
   newVocab.forEach((item) => {
@@ -181,11 +220,12 @@ function prepareToday(progress) {
     quizDone: false,
     summary: {
       newVocab: newVocab.length,
-      reviewVocab: dueVocab.length,
+      reviewVocab: Math.max(todayVocab.length - newVocab.length, 0),
       newGrammar: newGrammar.length,
-      reviewGrammar: dueGrammar.length
+      reviewGrammar: Math.max(todayGrammar.length - newGrammar.length, 0)
     }
   };
+  updatedStatus.pending = nextPending;
 
   updatedStatus.history = ensureHistory(updatedStatus, { studyDone: false, quizDone: false });
   saveProgress(updatedStatus);

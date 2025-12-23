@@ -285,6 +285,42 @@ button {
   max-width: 360px;
 }
 
+.notice-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 244, 250, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 999;
+  backdrop-filter: blur(6px);
+}
+
+.notice-card {
+  width: min(420px, 92vw);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 246, 252, 0.92));
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(61, 49, 73, 0.18);
+  padding: 24px 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.notice-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4b3d55;
+  margin-bottom: 10px;
+}
+
+.notice-text {
+  font-size: 15px;
+  color: #6f6276;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
 @media (min-width: 768px) {
   .grid-two {
     display: grid;
