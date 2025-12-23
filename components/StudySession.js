@@ -33,12 +33,12 @@ export default function StudySession({ cards, onRate }) {
     }
   };
 
-  const handleSpeak = () => {
-    if (!currentCard || currentCard.type !== 'vocab') return;
+  const handleSpeak = (text) => {
+    if (!currentCard || !text) return;
     if (typeof window === 'undefined' || !window.speechSynthesis) return;
 
     // 尽量让声音更自然，选择日语语音并设置柔和的语速和音调
-    const utter = new SpeechSynthesisUtterance(currentCard.word);
+    const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'ja-JP';
     utter.rate = 0.95;
     utter.pitch = 1.05;
@@ -88,7 +88,7 @@ export default function StudySession({ cards, onRate }) {
               </div>
               <button
                 className={`icon-button ${isSpeaking ? 'active' : ''}`}
-                onClick={handleSpeak}
+                onClick={() => handleSpeak(currentCard.word)}
                 aria-label="播放单词发音"
                 title="播放发音"
               >
@@ -120,7 +120,28 @@ export default function StudySession({ cards, onRate }) {
           </div>
         ) : (
           <div>
-            <h3 style={{ marginBottom: 4 }}>{currentCard.pattern}</h3>
+            <div className="flex-row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <h3 style={{ marginBottom: 4 }}>{currentCard.pattern}</h3>
+              <button
+                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                onClick={() => handleSpeak(currentCard.examples[0]?.jp || currentCard.pattern)}
+                aria-label="播放语法例句发音"
+                title="播放发音"
+              >
+                <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    <path
+                      d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </button>
+            </div>
             {!showAnswer && (
               <div>
                 <p className="subtle-text">想想看这个语法怎么用？</p>
