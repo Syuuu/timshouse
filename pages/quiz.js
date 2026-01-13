@@ -6,9 +6,9 @@ import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
 
-// 作为兜底的题量：当日没有生成任务时使用（有任务时不做数量限制，复习+当日学习全部纳入小测）
-const QUIZ_VOCAB_FALLBACK = 20;
-const QUIZ_GRAMMAR_FALLBACK = 10;
+// 作为兜底的题量：当日没有生成任务时使用（固定上限 17 单词 + 3 语法）
+const QUIZ_VOCAB_FALLBACK = 17;
+const QUIZ_GRAMMAR_FALLBACK = 3;
 
 function getTodayString() {
   const today = new Date();
@@ -151,8 +151,8 @@ export default function QuizPage() {
     const today = progress.today?.date === getTodayString() ? progress.today : null;
     const vocabPool = today ? today.vocabIds.map((id) => vocabN2.find((v) => v.id === id)).filter(Boolean) : [];
     const grammarPool = today ? today.grammarIds.map((id) => grammarN2.find((g) => g.id === id)).filter(Boolean) : [];
-    const vocabSource = vocabPool.length ? vocabPool : pickRandom(vocabN2, QUIZ_VOCAB_FALLBACK);
-    const grammarSource = grammarPool.length ? grammarPool : pickRandom(grammarN2, QUIZ_GRAMMAR_FALLBACK);
+    const vocabSource = vocabPool.length ? vocabPool.slice(0, QUIZ_VOCAB_FALLBACK) : pickRandom(vocabN2, QUIZ_VOCAB_FALLBACK);
+    const grammarSource = grammarPool.length ? grammarPool.slice(0, QUIZ_GRAMMAR_FALLBACK) : pickRandom(grammarN2, QUIZ_GRAMMAR_FALLBACK);
 
     const vocabCount = vocabSource.length;
     const meaningCount = Math.ceil((vocabCount || QUIZ_VOCAB_FALLBACK) * 0.6);

@@ -8,7 +8,9 @@ import { grammarN2 } from '../data/grammarN2';
 // 可以在这里修改每日新单词和新语法数量
 const DAILY_NEW_VOCAB = 15;
 const DAILY_NEW_GRAMMAR = 3;
-const MAX_DAILY_ITEMS = 30;
+const MAX_DAILY_ITEMS = 20;
+const MAX_DAILY_VOCAB = 17;
+const MIN_DAILY_GRAMMAR = 3;
 
 function getTodayString() {
   const today = new Date();
@@ -190,14 +192,19 @@ function prepareToday(progress) {
   newVocabCandidates.forEach((item) => pushUnique('vocab', item.id));
   newGrammarCandidates.forEach((item) => pushUnique('grammar', item.id));
 
-  const selected = queue.slice(0, MAX_DAILY_ITEMS);
-  const deferred = queue.slice(MAX_DAILY_ITEMS);
+  const vocabQueue = queue.filter((item) => item.type === 'vocab').map((item) => item.id);
+  const grammarQueue = queue.filter((item) => item.type === 'grammar').map((item) => item.id);
 
-  const todayVocab = selected.filter((item) => item.type === 'vocab').map((item) => item.id);
-  const todayGrammar = selected.filter((item) => item.type === 'grammar').map((item) => item.id);
+  const todayGrammar = grammarQueue.slice(0, Math.min(MIN_DAILY_GRAMMAR, MAX_DAILY_ITEMS));
+  const remainingSlots = Math.max(MAX_DAILY_ITEMS - todayGrammar.length, 0);
+  const todayVocab = vocabQueue.slice(0, Math.min(MAX_DAILY_VOCAB, remainingSlots));
+
+  const grammarDeferred = grammarQueue.slice(todayGrammar.length);
+  const vocabDeferred = vocabQueue.slice(todayVocab.length);
+
   const nextPending = {
-    vocabIds: deferred.filter((item) => item.type === 'vocab').map((item) => item.id),
-    grammarIds: deferred.filter((item) => item.type === 'grammar').map((item) => item.id)
+    vocabIds: vocabDeferred,
+    grammarIds: grammarDeferred
   };
 
   const newVocab = vocabN2.filter((item) => todayVocab.includes(item.id) && !progress.vocabStatus[item.id]);
