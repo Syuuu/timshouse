@@ -1700,7 +1700,566 @@ export const vocabN2 = [
     examples: [
       { jp: '今回も同様の結果になった。', cn: '这次也得出了同样的结果。' }
     ]
+  },
+  {
+    id: 'vocab_171',
+    level: 'N2',
+    word: '見積もり',
+    reading: 'みつもり',
+    meaning: '估算；报价单',
+    examples: [{ jp: '修理の見積もりを出してもらった。', cn: '让对方出了维修报价单。' }]
+  },
+  {
+    id: 'vocab_172',
+    level: 'N2',
+    word: '手続き',
+    reading: 'てつづき',
+    meaning: '手续；办理流程',
+    examples: [{ jp: '転居の手続きを市役所で済ませた。', cn: '在市政府办完了搬家的手续。' }]
+  },
+  {
+    id: 'vocab_173',
+    level: 'N2',
+    word: '締め切り',
+    reading: 'しめきり',
+    meaning: '截止日期',
+    examples: [{ jp: '締め切りまでに提出します。', cn: '会在截止日期前提交。' }]
+  },
+  {
+    id: 'vocab_174',
+    level: 'N2',
+    word: '見落とす',
+    reading: 'みおとす',
+    meaning: '看漏；忽略',
+    examples: [{ jp: '大事な注意書きを見落とした。', cn: '把重要的注意事项看漏了。' }]
+  },
+  {
+    id: 'vocab_175',
+    level: 'N2',
+    word: '差し支え',
+    reading: 'さしつかえ',
+    meaning: '妨碍；不方便（常用于客气表达）',
+    examples: [{ jp: '差し支えなければ、お名前を教えてください。', cn: '如果不方便的话就算了，方便的话请告诉我名字。' }]
+  },
+  {
+    id: 'vocab_176',
+    level: 'N2',
+    word: '念のため',
+    reading: 'ねんのため',
+    meaning: '以防万一；保险起见',
+    examples: [{ jp: '念のため、もう一度確認しよう。', cn: '以防万一，再确认一次吧。' }]
+  },
+  {
+    id: 'vocab_177',
+    level: 'N2',
+    word: '至急',
+    reading: 'しきゅう',
+    meaning: '紧急；尽快（偏商务/邮件）',
+    examples: [{ jp: '至急ご返信いただけますと幸いです。', cn: '如能尽快回复将不胜感激。' }]
+  },
+  {
+    id: 'vocab_178',
+    level: 'N2',
+    word: '差し戻す',
+    reading: 'さしもどす',
+    meaning: '退回（文件、申请等）',
+    examples: [{ jp: '書類に不備があり、差し戻された。', cn: '文件有问题，被退回了。' }]
+  },
+  {
+    id: 'vocab_179',
+    level: 'N2',
+    word: '不備',
+    reading: 'ふび',
+    meaning: '缺漏；不齐全（多用于材料/文件）',
+    examples: [{ jp: '記入漏れなどの不備がないか確認してください。', cn: '请确认是否有漏填等缺漏。' }]
+  },
+  {
+    id: 'vocab_180',
+    level: 'N2',
+    word: '控える',
+    reading: 'ひかえる',
+    meaning: '控制；少做；预定在即',
+    examples: [{ jp: '最近は甘い物を控えている。', cn: '最近在控制甜食。' }]
+  },
+  {
+    id: 'vocab_181',
+    level: 'N2',
+    word: '見合わせる',
+    reading: 'みあわせる',
+    meaning: '暂缓；先不做（判断后先放一放）',
+    examples: [{ jp: '雨なので、外出は見合わせた。', cn: '因为下雨，暂缓外出。' }]
+  },
+  {
+    id: 'vocab_182',
+    level: 'N2',
+    word: '引き継ぐ',
+    reading: 'ひきつぐ',
+    meaning: '交接；接手',
+    examples: [{ jp: '担当を引き継いで、作業を続けた。', cn: '交接了负责人后继续工作。' }]
+  },
+  {
+    id: 'vocab_183',
+    level: 'N2',
+    word: '立ち上げる',
+    reading: 'たちあげる',
+    meaning: '启动；创建（系统/项目/公司等）',
+    examples: [{ jp: 'パソコンを立ち上げて資料を作った。', cn: '启动电脑做了资料。' }]
+  },
+  {
+    id: 'vocab_184',
+    level: 'N2',
+    word: '目立つ',
+    reading: 'めだつ',
+    meaning: '显眼；引人注意',
+    examples: [{ jp: 'このデザインは遠くからでも目立つ。', cn: '这个设计从远处也很显眼。' }]
+  },
+  {
+    id: 'vocab_185',
+    level: 'N2',
+    word: '気をつける',
+    reading: 'きをつける',
+    meaning: '注意；当心（很常用，但搭配很多）',
+    examples: [{ jp: '体調に気をつけてください。', cn: '请注意身体。' }]
+  },
+  {
+    id: 'vocab_186',
+    level: 'N2',
+    word: '気になる',
+    reading: 'きになる',
+    meaning: '在意；担心；感兴趣',
+    examples: [{ jp: 'そのニュースが気になっている。', cn: '我一直很在意那条新闻。' }]
+  },
+  {
+    id: 'vocab_187',
+    level: 'N2',
+    word: '間に合う',
+    reading: 'まにあう',
+    meaning: '赶得上；来得及',
+    examples: [{ jp: '電車に間に合ってよかった。', cn: '赶上电车太好了。' }]
+  },
+  {
+    id: 'vocab_188',
+    level: 'N2',
+    word: '取り消す',
+    reading: 'とりけす',
+    meaning: '取消（预约/计划/申请等）',
+    examples: [{ jp: '予約を取り消した。', cn: '取消了预约。' }]
+  },
+  {
+    id: 'vocab_189',
+    level: 'N2',
+    word: '見送る',
+    reading: 'みおくる',
+    meaning: '目送；送行；（更常用）暂时放弃/延期',
+    examples: [{ jp: '今回は購入を見送ることにした。', cn: '这次决定先不买了。' }]
+  },
+  {
+    id: 'vocab_190',
+    level: 'N2',
+    word: '埋める',
+    reading: 'うめる',
+    meaning: '填补；填上（空栏/差距/空缺）',
+    examples: [{ jp: '申請書の空欄を埋めてください。', cn: '请把申请表的空栏填上。' }]
+  },
+{
+    id: 'vocab_191',
+    level: 'N2',
+    word: '念',
+    reading: 'ねん',
+    meaning: '念头；注意（常用：念のため）',
+    examples: [{ jp: '念のため、連絡先をメモしておいた。', cn: '以防万一，把联系方式记下来了。' }]
+  },
+  {
+    id: 'vocab_192',
+    level: 'N2',
+    word: '不在',
+    reading: 'ふざい',
+    meaning: '不在；不在家',
+    examples: [{ jp: '配達に来たが、不在だった。', cn: '来送货时，人不在。' }]
+  },
+  {
+    id: 'vocab_193',
+    level: 'N2',
+    word: '在庫',
+    reading: 'ざいこ',
+    meaning: '库存；现货',
+    examples: [{ jp: 'この商品は在庫がありますか。', cn: '这件商品有现货吗？' }]
+  },
+  {
+    id: 'vocab_194',
+    level: 'N2',
+    word: '返品',
+    reading: 'へんぴん',
+    meaning: '退货',
+    examples: [{ jp: 'サイズが合わないので返品した。', cn: '因为尺寸不合适就退货了。' }]
+  },
+  {
+    id: 'vocab_195',
+    level: 'N2',
+    word: '交換',
+    reading: 'こうかん',
+    meaning: '更换；换货；交换',
+    examples: [{ jp: '初期不良だったので交換してもらった。', cn: '因为是初期故障，让对方换了新的。' }]
+  },
+  {
+    id: 'vocab_196',
+    level: 'N2',
+    word: '返金',
+    reading: 'へんきん',
+    meaning: '退款',
+    examples: [{ jp: '手続きが終わり次第、返金します。', cn: '手续结束后会退款。' }]
+  },
+  {
+    id: 'vocab_197',
+    level: 'N2',
+    word: '領収書',
+    reading: 'りょうしゅうしょ',
+    meaning: '收据（报销常见）',
+    examples: [{ jp: '領収書をください。', cn: '请给我收据。' }]
+  },
+  {
+    id: 'vocab_198',
+    level: 'N2',
+    word: '請求書',
+    reading: 'せいきゅうしょ',
+    meaning: '账单；发票（请款用）',
+    examples: [{ jp: '請求書をメールで送ってください。', cn: '请把账单用邮件发过来。' }]
+  },
+  {
+    id: 'vocab_199',
+    level: 'N2',
+    word: '支出',
+    reading: 'ししゅつ',
+    meaning: '支出（花出去的钱）',
+    examples: [{ jp: '今月は支出が多かった。', cn: '这个月支出有点多。' }]
+  },
+  {
+    id: 'vocab_200',
+    level: 'N2',
+    word: '収入',
+    reading: 'しゅうにゅう',
+    meaning: '收入',
+    examples: [{ jp: '副業で収入を増やしたい。', cn: '想通过副业增加收入。' }]
+  },
+  {
+    id: 'vocab_201',
+    level: 'N2',
+    word: '節約',
+    reading: 'せつやく',
+    meaning: '节约',
+    examples: [{ jp: '電気代を節約している。', cn: '在节约电费。' }]
+  },
+  {
+    id: 'vocab_202',
+    level: 'N2',
+    word: '無駄',
+    reading: 'むだ',
+    meaning: '浪费；无用',
+    examples: [{ jp: '無駄な買い物を減らしたい。', cn: '想减少不必要的购物。' }]
+  },
+  {
+    id: 'vocab_203',
+    level: 'N2',
+    word: '余る',
+    reading: 'あまる',
+    meaning: '剩下；多出来',
+    examples: [{ jp: '時間が余ったので散歩した。', cn: '时间多出来了，就去散步了。' }]
+  },
+  {
+    id: 'vocab_204',
+    level: 'N2',
+    word: '足りる',
+    reading: 'たりる',
+    meaning: '足够',
+    examples: [{ jp: 'この説明だけでは情報が足りない。', cn: '光靠这个说明信息不够。' }]
+  },
+  {
+    id: 'vocab_205',
+    level: 'N2',
+    word: '不足',
+    reading: 'ふそく',
+    meaning: '不足；不够',
+    examples: [{ jp: '睡眠不足で頭が痛い。', cn: '睡眠不足头疼。' }]
+  },
+  {
+    id: 'vocab_206',
+    level: 'N2',
+    word: '補う',
+    reading: 'おぎなう',
+    meaning: '弥补；补充',
+    examples: [{ jp: '不足分をサプリで補う。', cn: '用补剂弥补不足。' }]
+  },
+  {
+    id: 'vocab_207',
+    level: 'N2',
+    word: '維持',
+    reading: 'いじ',
+    meaning: '维持；保持',
+    examples: [{ jp: '健康を維持するために歩いている。', cn: '为了保持健康在走路。' }]
+  },
+  {
+    id: 'vocab_208',
+    level: 'N2',
+    word: '回復',
+    reading: 'かいふく',
+    meaning: '恢复',
+    examples: [{ jp: '体力が回復してきた。', cn: '体力恢复过来了。' }]
+  },
+  {
+    id: 'vocab_209',
+    level: 'N2',
+    word: '悪化',
+    reading: 'あっか',
+    meaning: '恶化',
+    examples: [{ jp: '症状が悪化したので病院に行った。', cn: '症状恶化了就去医院了。' }]
+  },
+  {
+    id: 'vocab_210',
+    level: 'N2',
+    word: '予防',
+    reading: 'よぼう',
+    meaning: '预防',
+    examples: [{ jp: '風邪の予防に手洗いが大事だ。', cn: '预防感冒勤洗手很重要。' }]
+  },
+  {
+    id: 'vocab_211',
+    level: 'N2',
+    word: '受け取る',
+    reading: 'うけとる',
+    meaning: '收到；领取',
+    examples: [{ jp: '荷物を受け取った。', cn: '收到了包裹。' }]
+  },
+  {
+    id: 'vocab_212',
+    level: 'N2',
+    word: '受け入れる',
+    reading: 'うけいれる',
+    meaning: '接受；接纳',
+    examples: [{ jp: '相手の意見を受け入れる。', cn: '接受对方的意见。' }]
+  },
+  {
+    id: 'vocab_213',
+    level: 'N2',
+    word: '断る',
+    reading: 'ことわる',
+    meaning: '拒绝；谢绝',
+    examples: [{ jp: '誘いを丁寧に断った。', cn: '礼貌地拒绝了邀请。' }]
+  },
+  {
+    id: 'vocab_214',
+    level: 'N2',
+    word: '引き受ける',
+    reading: 'ひきうける',
+    meaning: '承担；接受（工作/委托）',
+    examples: [{ jp: 'その仕事を引き受けた。', cn: '接下了那份工作。' }]
+  },
+  {
+    id: 'vocab_215',
+    level: 'N2',
+    word: '頼る',
+    reading: 'たよる',
+    meaning: '依靠；求助',
+    examples: [{ jp: '困ったときは友達に頼る。', cn: '遇到困难就找朋友帮忙。' }]
+  },
+  {
+    id: 'vocab_216',
+    level: 'N2',
+    word: '頼もしい',
+    reading: 'たのもしい',
+    meaning: '靠得住；可靠',
+    examples: [{ jp: '彼は頼もしい存在だ。', cn: '他是很可靠的存在。' }]
+  },
+  {
+    id: 'vocab_217',
+    level: 'N2',
+    word: '見守る',
+    reading: 'みまもる',
+    meaning: '守望；在旁关注',
+    examples: [{ jp: '子どもの成長を見守る。', cn: '关注孩子的成长。' }]
+  },
+  {
+    id: 'vocab_218',
+    level: 'N2',
+    word: '見習う',
+    reading: 'みならう',
+    meaning: '学习（别人的优点）；效仿',
+    examples: [{ jp: '先輩の姿勢を見習いたい。', cn: '想学习前辈的态度。' }]
+  },
+  {
+    id: 'vocab_219',
+    level: 'N2',
+    word: '取り組む',
+    reading: 'とりくむ',
+    meaning: '着手；努力做',
+    examples: [{ jp: '新しい課題に取り組んでいる。', cn: '正在着手新的课题。' }]
+  },
+  {
+    id: 'vocab_220',
+    level: 'N2',
+    word: '仕上げる',
+    reading: 'しあげる',
+    meaning: '完成；收尾做好',
+    examples: [{ jp: '資料を今日中に仕上げる。', cn: '今天之内把资料做完。' }]
+  },
+  {
+    id: 'vocab_221',
+    level: 'N2',
+    word: '見込む',
+    reading: 'みこむ',
+    meaning: '预期；估计',
+    examples: [{ jp: '売上は来月増えると見込んでいる。', cn: '预计下个月销售额会增加。' }]
+  },
+  {
+    id: 'vocab_222',
+    level: 'N2',
+    word: '見当',
+    reading: 'けんとう',
+    meaning: '大致；头绪',
+    examples: [{ jp: '値段の見当がつかない。', cn: '完全没个价位概念。' }]
+  },
+  {
+    id: 'vocab_223',
+    level: 'N2',
+    word: '手間',
+    reading: 'てま',
+    meaning: '工夫/麻烦的步骤；费事',
+    examples: [{ jp: 'この作業は手間がかかる。', cn: '这项工作很费事。' }]
+  },
+  {
+    id: 'vocab_224',
+    level: 'N2',
+    word: '手頃',
+    reading: 'てごろ',
+    meaning: '合适的（价格/大小等）；适中',
+    examples: [{ jp: '手頃な値段の店を探している。', cn: '在找价格合适的店。' }]
+  },
+  {
+    id: 'vocab_225',
+    level: 'N2',
+    word: '見分ける',
+    reading: 'みわける',
+    meaning: '辨别；分辨',
+    examples: [{ jp: '本物かどうか見分けるのは難しい。', cn: '分辨真假很难。' }]
+  },
+  {
+    id: 'vocab_226',
+    level: 'N2',
+    word: '見送る',
+    reading: 'みおくる',
+    meaning: '送行；（更常用）暂缓/放弃（计划）',
+    examples: [{ jp: '今回は参加を見送ります。', cn: '这次先不参加了。' }]
+  },
+  {
+    id: 'vocab_227',
+    level: 'N2',
+    word: '取り急ぎ',
+    reading: 'とりいそぎ',
+    meaning: '先简单/先赶紧（邮件常用开头）',
+    examples: [{ jp: '取り急ぎ、現状をご連絡いたします。', cn: '先简单汇报一下现状。' }]
+  },
+  {
+    id: 'vocab_228',
+    level: 'N2',
+    word: '改めて',
+    reading: 'あらためて',
+    meaning: '再一次；另行（更正式）',
+    examples: [{ jp: '詳細は改めてご連絡します。', cn: '详细内容我会另行联系。' }]
+  },
+  {
+    id: 'vocab_229',
+    level: 'N2',
+    word: '折り返す',
+    reading: 'おりかえす',
+    meaning: '回电；折返',
+    examples: [{ jp: '後ほど折り返しお電話します。', cn: '稍后我会回电话。' }]
+  },
+  {
+    id: 'vocab_230',
+    level: 'N2',
+    word: '差し替える',
+    reading: 'さしかえる',
+    meaning: '替换（文件/图片/资料）',
+    examples: [{ jp: '古い資料を新しいものに差し替えた。', cn: '把旧资料替换成新的了。' }]
+  },
+  {
+    id: 'vocab_231',
+    level: 'N2',
+    word: '記入',
+    reading: 'きにゅう',
+    meaning: '填写（表格等）',
+    examples: [{ jp: '申込書に必要事項を記入してください。', cn: '请在申请表上填写必要事项。' }]
+  },
+  {
+    id: 'vocab_232',
+    level: 'N2',
+    word: '記載',
+    reading: 'きさい',
+    meaning: '记载；写明（更书面）',
+    examples: [{ jp: '資料に記載されている通りです。', cn: '正如资料里写的那样。' }]
+  },
+  {
+    id: 'vocab_233',
+    level: 'N2',
+    word: '紛失',
+    reading: 'ふんしつ',
+    meaning: '丢失（偏正式）',
+    examples: [{ jp: '社員証を紛失してしまった。', cn: '把员工证弄丢了。' }]
+  },
+  {
+    id: 'vocab_234',
+    level: 'N2',
+    word: '落とし物',
+    reading: 'おとしもの',
+    meaning: '遗失物；失物',
+    examples: [{ jp: '駅で落とし物を届けた。', cn: '在车站把失物交给了工作人员。' }]
+  },
+  {
+    id: 'vocab_235',
+    level: 'N2',
+    word: '問い合わせ',
+    reading: 'といあわせ',
+    meaning: '咨询；询问（名词）',
+    examples: [{ jp: '詳細は窓口へお問い合わせください。', cn: '详情请咨询窗口。' }]
+  },
+  {
+    id: 'vocab_236',
+    level: 'N2',
+    word: '混雑',
+    reading: 'こんざつ',
+    meaning: '拥挤；混杂（常说：混雑している）',
+    examples: [{ jp: '駅は朝、混雑している。', cn: '车站早上很拥挤。' }]
+  },
+  {
+    id: 'vocab_237',
+    level: 'N2',
+    word: '渋滞',
+    reading: 'じゅうたい',
+    meaning: '堵车',
+    examples: [{ jp: '渋滞で到着が遅れた。', cn: '因为堵车到得晚了。' }]
+  },
+  {
+    id: 'vocab_238',
+    level: 'N2',
+    word: '遅刻',
+    reading: 'ちこく',
+    meaning: '迟到',
+    examples: [{ jp: '寝坊して遅刻した。', cn: '睡过头迟到了。' }]
+  },
+  {
+    id: 'vocab_239',
+    level: 'N2',
+    word: '早退',
+    reading: 'そうたい',
+    meaning: '早退（提前下班/离开）',
+    examples: [{ jp: '体調不良で早退した。', cn: '因为身体不舒服提前回去了。' }]
+  },
+  {
+    id: 'vocab_240',
+    level: 'N2',
+    word: '欠席',
+    reading: 'けっせき',
+    meaning: '缺席',
+    examples: [{ jp: '都合により欠席します。', cn: '因事缺席。' }]
   }
-
 
 ];
