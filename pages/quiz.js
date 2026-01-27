@@ -109,14 +109,14 @@ function buildVocabMeaningQuestion(item, pool) {
 }
 
 function buildVocabListenWordQuestion(item, pool) {
-  const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.word), 3);
-  const options = shuffle([item.word, ...wrongOptions]);
+  const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.meaning), 3);
+  const options = shuffle([item.meaning, ...wrongOptions]);
   return {
     id: `q_listen_word_${item.id}`,
     type: 'vocab-listen-word',
     prompt: '听发音，选出正确的单词',
     options,
-    answer: item.word,
+    answer: item.meaning,
     audioText: item.word
   };
 }
@@ -146,7 +146,6 @@ function buildVocabListenSentenceQuestion(item, pool) {
     id: `q_listen_sentence_${item.id}`,
     type: 'vocab-listen-sentence',
     prompt: '听例句，选择句子里出现的单词',
-    extra: example.cn,
     options,
     answer: item.word,
     audioText
@@ -283,7 +282,7 @@ export default function QuizPage() {
         <HistoryList history={progress?.history || []} />
       </div>
 
-      <footer className="app-footer">By Xixi · v3.0.1</footer>
+      <footer className="app-footer">By Xixi · v3.0.2</footer>
     </div>
   );
 }

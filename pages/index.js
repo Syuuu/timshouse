@@ -413,7 +413,7 @@ export default function Home() {
         <StudySession cards={studyCards} onRate={handleRate} />
       </div>
 
-      <footer className="app-footer">By Xixi · v3.0.1</footer>
+      <footer className="app-footer">By Xixi · v3.0.2</footer>
     </div>
   );
 }
