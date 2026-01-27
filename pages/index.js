@@ -4,12 +4,15 @@ import DashboardSummary from '../components/DashboardSummary';
 import StudySession from '../components/StudySession';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
+import { phrasesN2 } from '../data/phrasesN2';
 
 // 可以在这里修改每日新单词和新语法数量
-const DAILY_NEW_VOCAB = 15;
+const DAILY_NEW_VOCAB = 12;
+const DAILY_NEW_PHRASE = 5;
 const DAILY_NEW_GRAMMAR = 3;
 const MAX_DAILY_ITEMS = 20;
-const MAX_DAILY_VOCAB = 17;
+const MAX_DAILY_VOCAB = 12;
+const MAX_DAILY_PHRASE = 5;
 const MIN_DAILY_GRAMMAR = 3;
 
 function getTodayString() {
@@ -40,17 +43,20 @@ function previousDateString(dateString) {
 function prepareBlankProgress() {
   return {
     vocabStatus: {},
+    phraseStatus: {},
     grammarStatus: {},
     pending: {
       vocabIds: [],
+      phraseIds: [],
       grammarIds: []
     },
     today: {
       date: '',
       vocabIds: [],
+      phraseIds: [],
       grammarIds: [],
       completedIds: [],
-      summary: { newVocab: 0, reviewVocab: 0, newGrammar: 0, reviewGrammar: 0 },
+      summary: { newVocab: 0, reviewVocab: 0, newPhrase: 0, reviewPhrase: 0, newGrammar: 0, reviewGrammar: 0 },
       studyDone: false,
       quizDone: false
     },
@@ -69,8 +75,9 @@ function loadProgress() {
       ...blank,
       ...parsed,
       vocabStatus: parsed.vocabStatus || {},
+      phraseStatus: parsed.phraseStatus || {},
       grammarStatus: parsed.grammarStatus || {},
-      pending: parsed.pending || blank.pending,
+      pending: { ...blank.pending, ...(parsed.pending || {}) },
       today: { ...blank.today, ...(parsed.today || {}) },
       history: parsed.history || []
     };
@@ -155,18 +162,23 @@ function calculateStreak(history = []) {
 function prepareToday(progress) {
   const today = getTodayString();
 
-  if (progress.today.date === today && progress.today.vocabIds.length > 0) {
+  const todayCount = progress.today.vocabIds.length + progress.today.phraseIds.length + progress.today.grammarIds.length;
+  if (progress.today.date === today && todayCount > 0) {
     return progress;
   }
 
   const previousToday = progress.today || {};
   const shouldCarryOver = previousToday.date && previousToday.date !== today && !(previousToday.studyDone && previousToday.quizDone);
   const carryoverVocab = shouldCarryOver ? previousToday.vocabIds : [];
+  const carryoverPhrase = shouldCarryOver ? previousToday.phraseIds : [];
   const carryoverGrammar = shouldCarryOver ? previousToday.grammarIds : [];
 
-  const pending = progress.pending || { vocabIds: [], grammarIds: [] };
+  const pending = progress.pending || { vocabIds: [], phraseIds: [], grammarIds: [] };
 
   const dueVocab = Object.entries(progress.vocabStatus)
+    .filter(([, value]) => value.nextReviewDate && value.nextReviewDate <= today)
+    .map(([id]) => id);
+  const duePhrase = Object.entries(progress.phraseStatus)
     .filter(([, value]) => value.nextReviewDate && value.nextReviewDate <= today)
     .map(([id]) => id);
   const dueGrammar = Object.entries(progress.grammarStatus)
@@ -174,6 +186,7 @@ function prepareToday(progress) {
     .map(([id]) => id);
 
   const newVocabCandidates = vocabN2.filter((item) => !progress.vocabStatus[item.id]).slice(0, DAILY_NEW_VOCAB * 3);
+  const newPhraseCandidates = phrasesN2.filter((item) => !progress.phraseStatus[item.id]).slice(0, DAILY_NEW_PHRASE * 3);
   const newGrammarCandidates = grammarN2.filter((item) => !progress.grammarStatus[item.id]).slice(0, DAILY_NEW_GRAMMAR * 3);
 
   const queue = [];
@@ -184,35 +197,48 @@ function prepareToday(progress) {
   };
 
   pending.vocabIds.forEach((id) => pushUnique('vocab', id));
+  pending.phraseIds.forEach((id) => pushUnique('phrase', id));
   pending.grammarIds.forEach((id) => pushUnique('grammar', id));
   carryoverVocab.forEach((id) => pushUnique('vocab', id));
+  carryoverPhrase.forEach((id) => pushUnique('phrase', id));
   carryoverGrammar.forEach((id) => pushUnique('grammar', id));
   dueVocab.forEach((id) => pushUnique('vocab', id));
+  duePhrase.forEach((id) => pushUnique('phrase', id));
   dueGrammar.forEach((id) => pushUnique('grammar', id));
   newVocabCandidates.forEach((item) => pushUnique('vocab', item.id));
+  newPhraseCandidates.forEach((item) => pushUnique('phrase', item.id));
   newGrammarCandidates.forEach((item) => pushUnique('grammar', item.id));
 
   const vocabQueue = queue.filter((item) => item.type === 'vocab').map((item) => item.id);
+  const phraseQueue = queue.filter((item) => item.type === 'phrase').map((item) => item.id);
   const grammarQueue = queue.filter((item) => item.type === 'grammar').map((item) => item.id);
 
   const todayGrammar = grammarQueue.slice(0, Math.min(MIN_DAILY_GRAMMAR, MAX_DAILY_ITEMS));
   const remainingSlots = Math.max(MAX_DAILY_ITEMS - todayGrammar.length, 0);
-  const todayVocab = vocabQueue.slice(0, Math.min(MAX_DAILY_VOCAB, remainingSlots));
+  const todayPhrases = phraseQueue.slice(0, Math.min(MAX_DAILY_PHRASE, remainingSlots));
+  const vocabSlots = Math.max(remainingSlots - todayPhrases.length, 0);
+  const todayVocab = vocabQueue.slice(0, Math.min(MAX_DAILY_VOCAB, vocabSlots));
 
   const grammarDeferred = grammarQueue.slice(todayGrammar.length);
+  const phraseDeferred = phraseQueue.slice(todayPhrases.length);
   const vocabDeferred = vocabQueue.slice(todayVocab.length);
 
   const nextPending = {
     vocabIds: vocabDeferred,
+    phraseIds: phraseDeferred,
     grammarIds: grammarDeferred
   };
 
   const newVocab = vocabN2.filter((item) => todayVocab.includes(item.id) && !progress.vocabStatus[item.id]);
+  const newPhrase = phrasesN2.filter((item) => todayPhrases.includes(item.id) && !progress.phraseStatus[item.id]);
   const newGrammar = grammarN2.filter((item) => todayGrammar.includes(item.id) && !progress.grammarStatus[item.id]);
 
   const updatedStatus = { ...progress };
   newVocab.forEach((item) => {
     updatedStatus.vocabStatus[item.id] = { lastReviewedAt: null, nextReviewDate: today, ease: 'new' };
+  });
+  newPhrase.forEach((item) => {
+    updatedStatus.phraseStatus[item.id] = { lastReviewedAt: null, nextReviewDate: today, ease: 'new' };
   });
   newGrammar.forEach((item) => {
     updatedStatus.grammarStatus[item.id] = { lastReviewedAt: null, nextReviewDate: today, ease: 'new' };
@@ -221,6 +247,7 @@ function prepareToday(progress) {
   updatedStatus.today = {
     date: today,
     vocabIds: todayVocab,
+    phraseIds: todayPhrases,
     grammarIds: todayGrammar,
     completedIds: [],
     studyDone: false,
@@ -228,6 +255,8 @@ function prepareToday(progress) {
     summary: {
       newVocab: newVocab.length,
       reviewVocab: Math.max(todayVocab.length - newVocab.length, 0),
+      newPhrase: newPhrase.length,
+      reviewPhrase: Math.max(todayPhrases.length - newPhrase.length, 0),
       newGrammar: newGrammar.length,
       reviewGrammar: Math.max(todayGrammar.length - newGrammar.length, 0)
     }
@@ -273,19 +302,21 @@ export default function Home() {
   }, [refreshProgress]);
 
   const vocabMap = useMemo(() => buildMap(vocabN2), []);
+  const phraseMap = useMemo(() => buildMap(phrasesN2), []);
   const grammarMap = useMemo(() => buildMap(grammarN2), []);
 
   const studyCards = useMemo(() => {
     if (!progress) return [];
     const { today } = progress;
     const vocabCards = today.vocabIds.map((id) => ({ ...vocabMap[id], type: 'vocab', completed: today.completedIds.includes(id) })).filter(Boolean);
+    const phraseCards = today.phraseIds.map((id) => ({ ...phraseMap[id], type: 'phrase', completed: today.completedIds.includes(id) })).filter(Boolean);
     const grammarCards = today.grammarIds.map((id) => ({ ...grammarMap[id], type: 'grammar', completed: today.completedIds.includes(id) })).filter(Boolean);
-    return [...vocabCards, ...grammarCards];
-  }, [progress, vocabMap, grammarMap]);
+    return [...vocabCards, ...phraseCards, ...grammarCards];
+  }, [progress, vocabMap, phraseMap, grammarMap]);
 
   const progressPercent = useMemo(() => {
     if (!progress) return 0;
-    const total = progress.today.vocabIds.length + progress.today.grammarIds.length;
+    const total = progress.today.vocabIds.length + progress.today.phraseIds.length + progress.today.grammarIds.length;
     if (total === 0) return 0;
     return Math.round((progress.today.completedIds.length / total) * 100);
   }, [progress]);
@@ -299,7 +330,7 @@ export default function Home() {
   const handleRate = (card, level) => {
     const today = getTodayString();
     const updated = { ...progress };
-    const targetKey = card.type === 'vocab' ? 'vocabStatus' : 'grammarStatus';
+    const targetKey = card.type === 'vocab' ? 'vocabStatus' : card.type === 'phrase' ? 'phraseStatus' : 'grammarStatus';
     const status = updated[targetKey][card.id] || {};
 
     let days = 1;
@@ -321,7 +352,7 @@ export default function Home() {
       updated.today.completedIds = [...updated.today.completedIds, card.id];
     }
 
-    const total = updated.today.vocabIds.length + updated.today.grammarIds.length;
+    const total = updated.today.vocabIds.length + updated.today.phraseIds.length + updated.today.grammarIds.length;
     const completedAll = updated.today.completedIds.length >= total && total > 0;
     updated.today.studyDone = completedAll || updated.today.studyDone;
     updated.history = ensureHistory(updated, {
@@ -382,7 +413,7 @@ export default function Home() {
         <StudySession cards={studyCards} onRate={handleRate} />
       </div>
 
-      <footer className="app-footer">By Xixi · v1.1.1</footer>
+      <footer className="app-footer">By Xixi · v2.0.0</footer>
     </div>
   );
 }

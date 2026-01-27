@@ -4,8 +4,8 @@
   gap: 14px;
   padding: 18px 18px 16px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(255, 239, 247, 0.96), rgba(215, 207, 251, 0.95));
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(232, 241, 255, 0.95));
+  border: 1px solid rgba(220, 232, 255, 0.9);
   box-shadow: var(--card-shadow);
   position: relative;
   overflow: hidden;
@@ -18,7 +18,7 @@
   width: 260px;
   height: 160px;
   background: url('/decor-bubbles.svg') no-repeat center/contain;
-  opacity: 0.35;
+  opacity: 0.18;
   pointer-events: none;
 }
 
@@ -37,15 +37,15 @@
 
 .heroNote {
   margin-top: 10px;
-  color: #56455f;
-  font-weight: 700;
+  color: #2b3b5f;
+  font-weight: 600;
   line-height: 1.6;
 }
 
 .greeting {
   font-size: 30px;
   font-weight: 800;
-  background: linear-gradient(120deg, #f6b9d3, #c8c3ff);
+  background: linear-gradient(120deg, #2449c4, #2f6bff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -57,10 +57,10 @@
   gap: 6px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
-  color: #8a6da4;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2f4ea6;
   font-weight: 800;
-  box-shadow: 0 12px 22px rgba(60, 39, 80, 0.08);
+  box-shadow: 0 12px 22px rgba(31, 58, 120, 0.08);
 }
 
 .datePill {
@@ -70,29 +70,29 @@
   padding: 8px 12px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.9);
-  color: #7a688f;
+  color: #2f4ea6;
   font-weight: 700;
-  box-shadow: 0 10px 20px rgba(101, 73, 120, 0.12);
+  box-shadow: 0 10px 20px rgba(31, 58, 120, 0.12);
 }
 
 .datePillAccent {
-  background: linear-gradient(120deg, rgba(255, 229, 242, 0.95), rgba(220, 208, 255, 0.92));
-  color: #c36295;
+  background: linear-gradient(120deg, rgba(230, 240, 255, 0.95), rgba(212, 228, 255, 0.92));
+  color: #2f4ea6;
 }
 
 .ctaPanel {
   margin-top: 16px;
   padding: 14px;
   border-radius: 15px;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(248, 236, 255, 0.86));
-  box-shadow: 0 18px 30px rgba(195, 167, 228, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(233, 241, 255, 0.9));
+  box-shadow: 0 18px 30px rgba(31, 58, 120, 0.12);
+  border: 1px solid rgba(220, 232, 255, 0.92);
 }
 
 .ctaLegend {
   margin-bottom: 12px;
-  color: #7b6d8c;
-  font-weight: 700;
+  color: #4c5e84;
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -122,32 +122,32 @@
 }
 
 .ctaPrimary {
-  background: linear-gradient(110deg, #f7c6dd, #cfc2ff);
+  background: linear-gradient(110deg, #2f6bff, #6aa8ff);
   color: #fff;
-  box-shadow: 0 18px 32px rgba(204, 178, 233, 0.45);
+  box-shadow: 0 18px 32px rgba(47, 107, 255, 0.35);
 }
 
 .ctaSecondary {
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(244, 234, 255, 0.9));
-  color: #6a4c7d;
-  border: 1px solid rgba(204, 185, 235, 0.9);
-  box-shadow: 0 16px 28px rgba(117, 86, 156, 0.12);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.96), rgba(229, 239, 255, 0.9));
+  color: #2f4ea6;
+  border: 1px solid rgba(200, 220, 255, 0.9);
+  box-shadow: 0 16px 28px rgba(31, 58, 120, 0.12);
 }
 
 
 
 .taskGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
 }
 
 .taskCard {
   padding: 12px;
   border-radius: 14px;
-  background: linear-gradient(140deg, rgba(255, 255, 255, 0.92), rgba(255, 243, 249, 0.9));
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.95), rgba(233, 241, 255, 0.92));
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(220, 232, 255, 0.8);
 }
 
 .taskLabel {
@@ -155,7 +155,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  color: #7c6a85;
+  color: #43537a;
 }
 
 .taskIcon {
@@ -164,15 +164,15 @@
   height: 26px;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(63, 44, 79, 0.08);
+  box-shadow: 0 8px 16px rgba(31, 58, 120, 0.08);
 }
 
 .taskNumber {
   font-size: 26px;
   font-weight: 800;
-  color: #c56fa1;
+  color: #2f6bff;
 }
 
 .streakArea {
@@ -185,20 +185,20 @@
   gap: 6px;
   padding: 14px 16px;
   border-radius: 16px;
-  background: linear-gradient(120deg, rgba(255, 243, 248, 0.92), rgba(215, 207, 251, 0.92));
+  background: linear-gradient(120deg, rgba(240, 246, 255, 0.92), rgba(222, 234, 255, 0.92));
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(220, 232, 255, 0.8);
 }
 
 .streakLabel {
   font-weight: 700;
-  color: #8b6b92;
+  color: #4c5e84;
 }
 
 .streakValue {
   font-size: 32px;
   font-weight: 800;
-  color: #d2779b;
+  color: #2f6bff;
 }
 
 .streakValue span {
@@ -206,22 +206,22 @@
 }
 
 .streakLevel {
-  color: #5f4b70;
-  font-weight: 700;
+  color: #3c4e74;
+  font-weight: 600;
 }
 
 .emptyHint {
   padding: 12px;
   text-align: center;
-  color: #9a8fa0;
-  background: #fff7fb;
+  color: #7b8ab0;
+  background: #f2f6ff;
   border-radius: 12px;
 }
 
 .completionNote {
   margin-top: 6px;
-  color: #7a6d87;
-  font-weight: 700;
+  color: #4c5e84;
+  font-weight: 600;
 }
 
 .completionTagRow {
@@ -236,16 +236,16 @@
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(220, 232, 255, 0.8);
   box-shadow: var(--card-shadow);
 }
 
 .tagDone {
-  background: linear-gradient(120deg, #e3f7f1, #cde7ff);
-  color: #3c7d73;
+  background: linear-gradient(120deg, #e0f4ff, #d2e6ff);
+  color: #2f6bff;
 }
 
 .tagTodo {
-  background: linear-gradient(120deg, #fff5f5, #ffe7f3);
-  color: #c07b9b;
+  background: linear-gradient(120deg, #f4f7ff, #e5edff);
+  color: #5b6f97;
 }
