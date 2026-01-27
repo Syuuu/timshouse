@@ -283,7 +283,7 @@ export default function QuizPage() {
         <HistoryList history={progress?.history || []} />
       </div>
 
-      <footer className="app-footer">By Xixi · v2.0.0</footer>
+      <footer className="app-footer">By Xixi · v3.0.1</footer>
     </div>
   );
 }

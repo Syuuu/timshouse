@@ -17,6 +17,7 @@ export default function QuizPanel({ questions, onFinish }) {
   }, [result, questions]);
 
   const handleSubmit = () => {
+    if (result) return;
     const wrong = [];
     let correctCount = 0;
     questions.forEach((q) => {
@@ -81,7 +82,7 @@ export default function QuizPanel({ questions, onFinish }) {
       <div className="section-title">今日小测</div>
       <div className="subtle-text">优先覆盖今日学习+复习的全部条目，若无任务再随机补充</div>
 
-      {currentQuestion && (
+      {!result && currentQuestion && (
         <div className="card" style={{ marginTop: 12 }}>
           <div className="badge-row">
             <span className="tag">{typeLabel[currentQuestion.type] || '选择题'}</span>
