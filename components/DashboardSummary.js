@@ -19,8 +19,8 @@ export default function DashboardSummary({
   history
 }) {
   const completionText = todayCompleted
-    ? '今天的学习已完成！'
-    : '今天还没学习完成哦（需要完成学习卡片和小测试）';
+    ? '今日学习完成，进度已记录。'
+    : '今日学习尚未完成（需完成学习卡片与小测试）。';
 
   return (
     <div className="section" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -34,7 +34,7 @@ export default function DashboardSummary({
 
           <div className={styles.heroTextBlock}>
           <div className={styles.greeting}>小雨的 N2 学习桌</div>
-          <div className={styles.heroNote}>每日 10 分钟，温柔巩固词汇与语法，稳步靠近 N2 目标。</div>
+          <div className={styles.heroNote}>每日 10 分钟，词汇・短句・语法同步巩固，稳步接近 N2 目标。</div>
           <div className={styles.ctaPanel}>
             <div className={styles.ctaLegend}>完成学习卡片 + 小测试，即可记录为今日完成</div>
             <div className={styles.ctaButtons}>
@@ -58,12 +58,20 @@ export default function DashboardSummary({
         <div className="section-title">今日任务</div>
         <div className={styles.taskGrid}>
           <div className={styles.taskCard}>
-            <div className={styles.taskLabel}><span className={styles.taskIcon}>🌸</span>新单词</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>📘</span>新单词</div>
             <div className={styles.taskNumber}>{summary.newVocab}</div>
           </div>
           <div className={styles.taskCard}>
-            <div className={styles.taskLabel}><span className={styles.taskIcon}>📚</span>复习单词</div>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>🧭</span>复习单词</div>
             <div className={styles.taskNumber}>{summary.reviewVocab}</div>
+          </div>
+          <div className={styles.taskCard}>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>💬</span>新短句</div>
+            <div className={styles.taskNumber}>{summary.newPhrase}</div>
+          </div>
+          <div className={styles.taskCard}>
+            <div className={styles.taskLabel}><span className={styles.taskIcon}>🪄</span>复习短句</div>
+            <div className={styles.taskNumber}>{summary.reviewPhrase}</div>
           </div>
           <div className={styles.taskCard}>
             <div className={styles.taskLabel}><span className={styles.taskIcon}>✨</span>新语法</div>

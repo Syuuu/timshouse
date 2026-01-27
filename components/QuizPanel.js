@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
+import { playTts } from '../lib/tts';
 
 export default function QuizPanel({ questions, onFinish }) {
   const [selected, setSelected] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const currentQuestion = questions[currentIndex];
 
@@ -59,7 +61,19 @@ export default function QuizPanel({ questions, onFinish }) {
   const typeLabel = {
     'vocab-meaning': '单词释义',
     'vocab-sentence': '例句填空',
-    grammar: '语法填空'
+    'vocab-listen-word': '听力选词',
+    'vocab-listen-sentence': '听力选词',
+    grammar: '语法填空',
+    'phrase-meaning': '短句翻译',
+    'phrase-listen-response': '听力对话'
+  };
+
+  const handlePlayAudio = (text) => {
+    if (!text) return;
+    playTts(text, {
+      onStart: () => setIsPlaying(true),
+      onEnd: () => setIsPlaying(false)
+    }).catch(() => setIsPlaying(false));
   };
 
   return (
@@ -76,6 +90,30 @@ export default function QuizPanel({ questions, onFinish }) {
           <div style={{ marginTop: 8 }}>
             <div style={{ fontWeight: 700 }}>{currentQuestion.prompt}</div>
             {currentQuestion.extra && <div className="subtle-text">{currentQuestion.extra}</div>}
+            {currentQuestion.audioText && (
+              <div className="audio-row">
+                <button
+                  className={`icon-button ${isPlaying ? 'active' : ''}`}
+                  onClick={() => handlePlayAudio(currentQuestion.audioText)}
+                  aria-label="播放听力"
+                  title="播放听力"
+                >
+                  <span className={`sound-wave ${isPlaying ? 'active' : ''}`}>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                      <path
+                        d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                </button>
+                <span className="subtle-text">点击播放听力</span>
+              </div>
+            )}
           </div>
           <div className="card-stack" style={{ marginTop: 10 }}>
             {currentQuestion.options.map((opt) => (
