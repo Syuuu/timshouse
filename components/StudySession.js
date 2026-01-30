@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { playTts } from '../lib/tts';
 
 export default function StudySession({ cards, onRate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,27 +35,11 @@ export default function StudySession({ cards, onRate }) {
   };
 
   const handleSpeak = (text) => {
-    if (!currentCard || !text) return;
-    if (typeof window === 'undefined' || !window.speechSynthesis) return;
-
-    // 尽量让声音更自然，选择日语语音并设置柔和的语速和音调
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'ja-JP';
-    utter.rate = 0.95;
-    utter.pitch = 1.05;
-
-    const voices = window.speechSynthesis.getVoices();
-    const jpVoice = voices.find((v) => v.lang === 'ja-JP' || v.name.toLowerCase().includes('japanese'));
-    if (jpVoice) {
-      utter.voice = jpVoice;
-    }
-
-    utter.onstart = () => setIsSpeaking(true);
-    utter.onend = () => setIsSpeaking(false);
-    utter.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utter);
+    if (!currentCard || !text || isSpeaking) return;
+    playTts(text, {
+      onStart: () => setIsSpeaking(true),
+      onEnd: () => setIsSpeaking(false)
+    }).catch(() => setIsSpeaking(false));
   };
 
   if (!cards || cards.length === 0) {
@@ -76,8 +61,10 @@ export default function StudySession({ cards, onRate }) {
       <div className="subtle-text">{hint}</div>
       <div className="card" style={{ marginTop: 12 }}>
         <div className="badge-row">
-          <span className="tag">{currentCard.type === 'vocab' ? '单词' : '语法'}</span>
-          <span className="tag">{currentIndex + 1}/{remainingCards.length}</span>
+          <span className="tag">
+            {currentCard.type === 'vocab' ? '单词' : currentCard.type === 'phrase' ? '短句' : '语法'}
+          </span>
+          <span className="tag">剩余 {remainingCards.length} 条</span>
         </div>
         {currentCard.type === 'vocab' ? (
           <div>
@@ -87,8 +74,10 @@ export default function StudySession({ cards, onRate }) {
                 <p className="subtle-text" style={{ marginTop: 2 }}>点击「显示答案」看看意思和例句</p>
               </div>
               <button
-                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
                 onClick={() => handleSpeak(currentCard.word)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
                 aria-label="播放单词发音"
                 title="播放发音"
               >
@@ -111,10 +100,125 @@ export default function StudySession({ cards, onRate }) {
                 <p style={{ fontWeight: 700 }}>{currentCard.meaning}</p>
                 {currentCard.examples.map((ex, idx) => (
                   <div key={idx} style={{ marginTop: 8 }}>
-                    <div>{ex.jp}</div>
+                    <div className="flex-row" style={{ justifyContent: 'space-between' }}>
+                      <div>{ex.jp}</div>
+                      <button
+                        className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
+                        onClick={() => handleSpeak(ex.jp)}
+                        disabled={isSpeaking}
+                        aria-busy={isSpeaking}
+                        aria-label="播放例句发音"
+                        title="播放例句"
+                      >
+                        <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                              fill="currentColor"
+                            />
+                            <path
+                              d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                            <path
+                              d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
                     <div className="subtle-text">{ex.cn}</div>
                   </div>
                 ))}
+                <div className="subtle-text" style={{ marginTop: 10 }}>
+                  已升级 OpenAI TTS，若失败会自动切换到基础语音。
+                </div>
+              </div>
+            )}
+          </div>
+        ) : currentCard.type === 'phrase' ? (
+          <div>
+            <div className="flex-row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div>
+                <h3 style={{ marginBottom: 2 }}>{currentCard.phrase}</h3>
+                <p className="subtle-text" style={{ marginTop: 2 }}>常用短句，一起记住语感。</p>
+              </div>
+              <button
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
+                onClick={() => handleSpeak(currentCard.phrase)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
+                aria-label="播放短句发音"
+                title="播放短句"
+              >
+                <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                    <path
+                      d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            {showAnswer && (
+              <div>
+                <p style={{ fontWeight: 700 }}>{currentCard.meaning}</p>
+                <div style={{ marginTop: 8 }}>
+                  <div className="flex-row" style={{ justifyContent: 'space-between' }}>
+                    <div>{currentCard.conversation.jp1}</div>
+                    <button
+                      className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
+                      onClick={() => handleSpeak(currentCard.conversation.jp1)}
+                      disabled={isSpeaking}
+                      aria-busy={isSpeaking}
+                      aria-label="播放对话第一句"
+                      title="播放第一句"
+                    >
+                      <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                          <path
+                            d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div className="subtle-text">{currentCard.conversation.cn1}</div>
+                </div>
+                <div style={{ marginTop: 8 }}>
+                  <div className="flex-row" style={{ justifyContent: 'space-between' }}>
+                    <div>{currentCard.conversation.jp2}</div>
+                    <button
+                      className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
+                      onClick={() => handleSpeak(currentCard.conversation.jp2)}
+                      disabled={isSpeaking}
+                      aria-busy={isSpeaking}
+                      aria-label="播放对话第二句"
+                      title="播放第二句"
+                    >
+                      <span className={`sound-wave ${isSpeaking ? 'active' : ''}`}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M4 10.5v3c0 .3.2.5.5.5h2.3c.2 0 .3 0 .4.2l2.6 2.6c.3.3.7.1.7-.3V7.5c0-.4-.4-.6-.7-.3l-2.6 2.6c-.1.1-.2.2-.4.2H4.5c-.3 0-.5.2-.5.5Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M15 9.5c.6.6.6 1.4 0 2-.6.6-.6 1.4 0 2" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                          <path
+                            d="M17.2 7.7c1.3 1.2 1.3 2.9 0 4.1-1.3 1.2-1.3 2.9 0 4.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                  <div className="subtle-text">{currentCard.conversation.cn2}</div>
+                </div>
               </div>
             )}
           </div>
@@ -123,8 +227,10 @@ export default function StudySession({ cards, onRate }) {
             <div className="flex-row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <h3 style={{ marginBottom: 4 }}>{currentCard.pattern}</h3>
               <button
-                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
                 onClick={() => handleSpeak(currentCard.examples[0]?.jp || currentCard.pattern)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
                 aria-label="播放语法例句发音"
                 title="播放发音"
               >
