@@ -5,9 +5,11 @@ import QuizPanel from '../components/QuizPanel';
 import HistoryList from '../components/HistoryList';
 import { vocabN2 } from '../data/vocabN2';
 import { grammarN2 } from '../data/grammarN2';
+import { phrasesN2 } from '../data/phrasesN2';
 
-// 作为兜底的题量：当日没有生成任务时使用（固定上限 17 单词 + 3 语法）
-const QUIZ_VOCAB_FALLBACK = 17;
+// 作为兜底的题量：当日没有生成任务时使用（固定上限 12 单词 + 5 短句 + 3 语法）
+const QUIZ_VOCAB_FALLBACK = 12;
+const QUIZ_PHRASE_FALLBACK = 5;
 const QUIZ_GRAMMAR_FALLBACK = 3;
 
 function getTodayString() {
@@ -24,15 +26,17 @@ function loadProgress() {
     const blankToday = {
       date: '',
       vocabIds: [],
+      phraseIds: [],
       grammarIds: [],
       completedIds: [],
-      summary: { newVocab: 0, reviewVocab: 0, newGrammar: 0, reviewGrammar: 0 },
+      summary: { newVocab: 0, reviewVocab: 0, newPhrase: 0, reviewPhrase: 0, newGrammar: 0, reviewGrammar: 0 },
       studyDone: false,
       quizDone: false
     };
     return {
       ...parsed,
       vocabStatus: parsed.vocabStatus || {},
+      phraseStatus: parsed.phraseStatus || {},
       grammarStatus: parsed.grammarStatus || {},
       today: { ...blankToday, ...(parsed.today || {}) },
       history: parsed.history || []
@@ -104,6 +108,19 @@ function buildVocabMeaningQuestion(item, pool) {
   };
 }
 
+function buildVocabListenWordQuestion(item, pool) {
+  const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.meaning), 3);
+  const options = shuffle([item.meaning, ...wrongOptions]);
+  return {
+    id: `q_listen_word_${item.id}`,
+    type: 'vocab-listen-word',
+    prompt: '听发音，选出正确的单词',
+    options,
+    answer: item.meaning,
+    audioText: item.reading || item.word
+  };
+}
+
 function buildVocabSentenceQuestion(item, pool) {
   const example = item.examples[0] || { jp: '', cn: '' };
   const base = example.jp || `${item.word} を使った例句`;
@@ -117,6 +134,21 @@ function buildVocabSentenceQuestion(item, pool) {
     extra: example.cn,
     options,
     answer: item.word
+  };
+}
+
+function buildVocabListenSentenceQuestion(item, pool) {
+  const example = item.examples[0] || { jp: '', cn: '' };
+  const audioText = example.jp || item.word;
+  const wrongOptions = pickRandom(pool.filter((v) => v.id !== item.id).map((v) => v.word), 3);
+  const options = shuffle([item.word, ...wrongOptions]);
+  return {
+    id: `q_listen_sentence_${item.id}`,
+    type: 'vocab-listen-sentence',
+    prompt: '听例句，选择句子里出现的单词',
+    options,
+    answer: item.word,
+    audioText
   };
 }
 
@@ -135,6 +167,43 @@ function buildGrammarQuestion(item, pool) {
   };
 }
 
+function buildPhraseMeaningQuestion(item, pool) {
+  const wrongOptions = pickRandom(pool.filter((p) => p.id !== item.id).map((p) => p.meaning), 3);
+  const options = shuffle([item.meaning, ...wrongOptions]);
+  return {
+    id: `q_phrase_meaning_${item.id}`,
+    type: 'phrase-meaning',
+    prompt: `${item.phrase} 的意思是？`,
+    options,
+    answer: item.meaning
+  };
+}
+
+function buildPhraseListenResponseQuestion(item, pool) {
+  const wrongOptions = pickRandom(pool.filter((p) => p.id !== item.id).map((p) => p.conversation.jp2), 3);
+  const options = shuffle([item.conversation.jp2, ...wrongOptions]);
+  return {
+    id: `q_phrase_listen_${item.id}`,
+    type: 'phrase-listen-response',
+    prompt: '听对话第一句，选择合适的回应',
+    options,
+    answer: item.conversation.jp2,
+    audioText: item.conversation.jp1
+  };
+}
+
+function buildVocabQuestionVariant(item, pool) {
+  const roll = Math.random();
+  if (roll < 0.4) return buildVocabMeaningQuestion(item, pool);
+  if (roll < 0.6) return buildVocabSentenceQuestion(item, pool);
+  if (roll < 0.8) return buildVocabListenWordQuestion(item, pool);
+  return buildVocabListenSentenceQuestion(item, pool);
+}
+
+function buildPhraseQuestionVariant(item, pool) {
+  return Math.random() < 0.5 ? buildPhraseMeaningQuestion(item, pool) : buildPhraseListenResponseQuestion(item, pool);
+}
+
 export default function QuizPage() {
   const router = useRouter();
   const [progress, setProgress] = useState(null);
@@ -150,19 +219,16 @@ export default function QuizPage() {
     if (!progress) return;
     const today = progress.today?.date === getTodayString() ? progress.today : null;
     const vocabPool = today ? today.vocabIds.map((id) => vocabN2.find((v) => v.id === id)).filter(Boolean) : [];
+    const phrasePool = today ? today.phraseIds.map((id) => phrasesN2.find((p) => p.id === id)).filter(Boolean) : [];
     const grammarPool = today ? today.grammarIds.map((id) => grammarN2.find((g) => g.id === id)).filter(Boolean) : [];
     const vocabSource = vocabPool.length ? vocabPool.slice(0, QUIZ_VOCAB_FALLBACK) : pickRandom(vocabN2, QUIZ_VOCAB_FALLBACK);
+    const phraseSource = phrasePool.length ? phrasePool.slice(0, QUIZ_PHRASE_FALLBACK) : pickRandom(phrasesN2, QUIZ_PHRASE_FALLBACK);
     const grammarSource = grammarPool.length ? grammarPool.slice(0, QUIZ_GRAMMAR_FALLBACK) : pickRandom(grammarN2, QUIZ_GRAMMAR_FALLBACK);
 
-    const vocabCount = vocabSource.length;
-    const meaningCount = Math.ceil((vocabCount || QUIZ_VOCAB_FALLBACK) * 0.6);
-    const meaningItems = vocabSource.slice(0, meaningCount);
-    const sentenceItems = vocabSource.slice(meaningCount);
-
-    const vocabMeaningQuestions = meaningItems.map((item) => buildVocabMeaningQuestion(item, vocabN2));
-    const vocabSentenceQuestions = sentenceItems.map((item) => buildVocabSentenceQuestion(item, vocabN2));
+    const vocabQuestions = vocabSource.map((item) => buildVocabQuestionVariant(item, vocabN2));
+    const phraseQuestions = phraseSource.map((item) => buildPhraseQuestionVariant(item, phrasesN2));
     const grammarQuestions = grammarSource.map((item) => buildGrammarQuestion(item, grammarN2));
-    setQuestions(shuffle([...vocabMeaningQuestions, ...vocabSentenceQuestions, ...grammarQuestions]));
+    setQuestions(shuffle([...vocabQuestions, ...phraseQuestions, ...grammarQuestions]));
   }, [progress]);
 
   const handleFinish = (payload) => {
@@ -216,7 +282,7 @@ export default function QuizPage() {
         <HistoryList history={progress?.history || []} />
       </div>
 
-      <footer className="app-footer">By Xixi · v1.1.1</footer>
+      <footer className="app-footer">By Xixi · v3.0.3</footer>
     </div>
   );
 }
