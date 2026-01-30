@@ -117,7 +117,7 @@ function buildVocabListenWordQuestion(item, pool) {
     prompt: '听发音，选出正确的单词',
     options,
     answer: item.meaning,
-    audioText: item.word
+    audioText: item.reading || item.word
   };
 }
 
@@ -282,7 +282,7 @@ export default function QuizPage() {
         <HistoryList history={progress?.history || []} />
       </div>
 
-      <footer className="app-footer">By Xixi · v3.0.2</footer>
+      <footer className="app-footer">By Xixi · v3.0.3</footer>
     </div>
   );
 }

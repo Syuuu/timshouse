@@ -35,7 +35,7 @@ export default function StudySession({ cards, onRate }) {
   };
 
   const handleSpeak = (text) => {
-    if (!currentCard || !text) return;
+    if (!currentCard || !text || isSpeaking) return;
     playTts(text, {
       onStart: () => setIsSpeaking(true),
       onEnd: () => setIsSpeaking(false)
@@ -64,7 +64,7 @@ export default function StudySession({ cards, onRate }) {
           <span className="tag">
             {currentCard.type === 'vocab' ? '单词' : currentCard.type === 'phrase' ? '短句' : '语法'}
           </span>
-          <span className="tag">{currentIndex + 1}/{remainingCards.length}</span>
+          <span className="tag">剩余 {remainingCards.length} 条</span>
         </div>
         {currentCard.type === 'vocab' ? (
           <div>
@@ -74,8 +74,10 @@ export default function StudySession({ cards, onRate }) {
                 <p className="subtle-text" style={{ marginTop: 2 }}>点击「显示答案」看看意思和例句</p>
               </div>
               <button
-                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
                 onClick={() => handleSpeak(currentCard.word)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
                 aria-label="播放单词发音"
                 title="播放发音"
               >
@@ -101,8 +103,10 @@ export default function StudySession({ cards, onRate }) {
                     <div className="flex-row" style={{ justifyContent: 'space-between' }}>
                       <div>{ex.jp}</div>
                       <button
-                        className={`icon-button small ${isSpeaking ? 'active' : ''}`}
+                        className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
                         onClick={() => handleSpeak(ex.jp)}
+                        disabled={isSpeaking}
+                        aria-busy={isSpeaking}
                         aria-label="播放例句发音"
                         title="播放例句"
                       >
@@ -137,8 +141,10 @@ export default function StudySession({ cards, onRate }) {
                 <p className="subtle-text" style={{ marginTop: 2 }}>常用短句，一起记住语感。</p>
               </div>
               <button
-                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
                 onClick={() => handleSpeak(currentCard.phrase)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
                 aria-label="播放短句发音"
                 title="播放短句"
               >
@@ -163,8 +169,10 @@ export default function StudySession({ cards, onRate }) {
                   <div className="flex-row" style={{ justifyContent: 'space-between' }}>
                     <div>{currentCard.conversation.jp1}</div>
                     <button
-                      className={`icon-button small ${isSpeaking ? 'active' : ''}`}
+                      className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
                       onClick={() => handleSpeak(currentCard.conversation.jp1)}
+                      disabled={isSpeaking}
+                      aria-busy={isSpeaking}
                       aria-label="播放对话第一句"
                       title="播放第一句"
                     >
@@ -188,8 +196,10 @@ export default function StudySession({ cards, onRate }) {
                   <div className="flex-row" style={{ justifyContent: 'space-between' }}>
                     <div>{currentCard.conversation.jp2}</div>
                     <button
-                      className={`icon-button small ${isSpeaking ? 'active' : ''}`}
+                      className={`icon-button small ${isSpeaking ? 'active loading' : ''}`}
                       onClick={() => handleSpeak(currentCard.conversation.jp2)}
+                      disabled={isSpeaking}
+                      aria-busy={isSpeaking}
                       aria-label="播放对话第二句"
                       title="播放第二句"
                     >
@@ -217,8 +227,10 @@ export default function StudySession({ cards, onRate }) {
             <div className="flex-row" style={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <h3 style={{ marginBottom: 4 }}>{currentCard.pattern}</h3>
               <button
-                className={`icon-button ${isSpeaking ? 'active' : ''}`}
+                className={`icon-button ${isSpeaking ? 'active loading' : ''}`}
                 onClick={() => handleSpeak(currentCard.examples[0]?.jp || currentCard.pattern)}
+                disabled={isSpeaking}
+                aria-busy={isSpeaking}
                 aria-label="播放语法例句发音"
                 title="播放发音"
               >

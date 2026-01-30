@@ -70,7 +70,7 @@ export default function QuizPanel({ questions, onFinish }) {
   };
 
   const handlePlayAudio = (text) => {
-    if (!text) return;
+    if (!text || isPlaying) return;
     playTts(text, {
       onStart: () => setIsPlaying(true),
       onEnd: () => setIsPlaying(false)
@@ -94,8 +94,10 @@ export default function QuizPanel({ questions, onFinish }) {
             {currentQuestion.audioText && (
               <div className="audio-row">
                 <button
-                  className={`icon-button ${isPlaying ? 'active' : ''}`}
+                  className={`icon-button ${isPlaying ? 'active loading' : ''}`}
                   onClick={() => handlePlayAudio(currentQuestion.audioText)}
+                  disabled={isPlaying}
+                  aria-busy={isPlaying}
                   aria-label="播放听力"
                   title="播放听力"
                 >

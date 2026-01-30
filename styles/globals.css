@@ -1,10 +1,10 @@
 :root {
-  --blue: #2f6bff;
-  --soft-blue: #e9f0ff;
-  --navy: #0f1d46;
-  --text: #1c2437;
-  --muted: #6b7a99;
-  --card-shadow: 0 18px 30px rgba(15, 35, 90, 0.08);
+  --blue: #f06292;
+  --soft-blue: #ffe3ee;
+  --navy: #5a2745;
+  --text: #4b2b3a;
+  --muted: #8a5f73;
+  --card-shadow: 0 18px 30px rgba(220, 120, 160, 0.18);
   --card-bg: rgba(255, 255, 255, 0.92);
 }
 
@@ -16,9 +16,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: radial-gradient(circle at 20% 15%, rgba(47, 107, 255, 0.08), transparent 35%),
-    radial-gradient(circle at 80% 0%, rgba(120, 173, 255, 0.12), transparent 35%),
-    linear-gradient(150deg, #f7f9ff 0%, #f0f4ff 100%);
+  background: radial-gradient(circle at 20% 15%, rgba(255, 169, 205, 0.28), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(255, 198, 220, 0.32), transparent 35%),
+    linear-gradient(150deg, #fff7fb 0%, #ffeaf2 100%);
   color: var(--text);
   line-height: 1.6;
 }
@@ -44,7 +44,7 @@ button {
   box-shadow: var(--card-shadow);
   padding: 18px;
   margin-bottom: 18px;
-  border: 1px solid rgba(230, 236, 255, 0.8);
+  border: 1px solid rgba(255, 214, 230, 0.8);
   backdrop-filter: blur(8px);
 }
 
@@ -55,7 +55,7 @@ button {
 }
 
 .primary-button {
-  background: linear-gradient(110deg, #2f6bff, #68a4ff);
+  background: linear-gradient(110deg, #f06292, #ff8db7);
   border: none;
   padding: 12px 16px;
   border-radius: 14px;
@@ -63,13 +63,13 @@ button {
   font-weight: 700;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
-  box-shadow: 0 12px 24px rgba(47, 107, 255, 0.25);
+  box-shadow: 0 12px 24px rgba(240, 98, 146, 0.28);
 }
 
 .primary-button:hover {
   transform: translateY(-2px);
   filter: saturate(1.05);
-  box-shadow: 0 18px 32px rgba(47, 107, 255, 0.35);
+  box-shadow: 0 18px 32px rgba(240, 98, 146, 0.38);
 }
 
 .primary-button:active {
@@ -78,30 +78,41 @@ button {
 
 .icon-button {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(203, 217, 255, 0.9);
+  border: 1px solid rgba(255, 198, 220, 0.9);
   width: 42px;
   height: 42px;
   border-radius: 12px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #2f6bff;
+  color: #e54f86;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease, border 0.2s ease, background 0.2s ease;
-  box-shadow: 0 10px 20px rgba(31, 58, 120, 0.08);
+  box-shadow: 0 10px 20px rgba(240, 98, 146, 0.18);
 }
 
 .icon-button:hover {
   transform: translateY(-1px);
-  border-color: #a9c2ff;
-  box-shadow: 0 12px 24px rgba(31, 58, 120, 0.12);
-  background: rgba(243, 247, 255, 0.96);
+  border-color: #ffb6d1;
+  box-shadow: 0 12px 24px rgba(240, 98, 146, 0.2);
+  background: rgba(255, 245, 249, 0.96);
 }
 
 .icon-button.active {
-  color: #1f4bd1;
-  border-color: #95b1ff;
-  box-shadow: 0 14px 26px rgba(47, 107, 255, 0.18);
+  color: #d6457b;
+  border-color: #ff9fc0;
+  box-shadow: 0 14px 26px rgba(240, 98, 146, 0.24);
+}
+
+.icon-button.loading {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
 }
 
 .icon-button.small {
@@ -122,20 +133,20 @@ button {
 
 .ghost-button {
   background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(203, 217, 255, 0.9);
+  border: 1px solid rgba(255, 198, 220, 0.9);
   padding: 10px 14px;
   border-radius: 12px;
   color: var(--text);
   font-weight: 700;
   cursor: pointer;
   transition: border 0.15s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 20px rgba(31, 58, 120, 0.06);
+  box-shadow: 0 10px 20px rgba(240, 98, 146, 0.12);
 }
 
 .ghost-button:hover {
-  border-color: #a9c2ff;
+  border-color: #ffb6d1;
   transform: translateY(-1px);
-  box-shadow: 0 14px 24px rgba(31, 58, 120, 0.08);
+  box-shadow: 0 14px 24px rgba(240, 98, 146, 0.18);
 }
 
 .ghost-button:disabled {
@@ -153,14 +164,14 @@ button {
 .progress-bar {
   width: 100%;
   height: 12px;
-  background: rgba(230, 238, 255, 0.8);
+  background: rgba(255, 226, 238, 0.8);
   border-radius: 999px;
   overflow: hidden;
 }
 
 .progress-inner {
   height: 100%;
-  background: linear-gradient(120deg, #2f6bff, #7fb2ff);
+  background: linear-gradient(120deg, #f06292, #ff9fc0);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
@@ -172,24 +183,24 @@ button {
 
 .card {
   padding: 16px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(240, 245, 255, 0.9));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 247, 0.92));
   border-radius: 16px;
   box-shadow: var(--card-shadow);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.2s ease;
-  border: 1px solid rgba(230, 236, 255, 0.9);
+  border: 1px solid rgba(255, 220, 236, 0.9);
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(31, 58, 120, 0.12);
+  box-shadow: 0 16px 34px rgba(240, 98, 146, 0.22);
 }
 
 .tag {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
-  background: linear-gradient(120deg, #f0f4ff, #e6f1ff);
-  color: #2f4ea6;
+  background: linear-gradient(120deg, #ffe8f1, #ffd6e6);
+  color: #b23a68;
   font-weight: 700;
   font-size: 12px;
 }
@@ -226,20 +237,20 @@ button {
   text-align: left;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(209, 222, 255, 0.9);
-  background: rgba(245, 249, 255, 0.92);
+  border: 1px solid rgba(255, 206, 226, 0.9);
+  background: rgba(255, 245, 249, 0.94);
   cursor: pointer;
   transition: border 0.15s ease, transform 0.15s ease;
 }
 
 .test-option:hover {
-  border-color: #7fb2ff;
+  border-color: #ff9fc0;
   transform: translateY(-1px);
 }
 
 .test-option.selected {
-  border-color: #2f6bff;
-  background: rgba(233, 241, 255, 0.9);
+  border-color: #f06292;
+  background: rgba(255, 228, 238, 0.92);
 }
 
 @keyframes pulse {
@@ -258,18 +269,18 @@ button {
 }
 
 .result-box {
-  background: linear-gradient(135deg, #f4f7ff, #eef4ff);
+  background: linear-gradient(135deg, #fff1f7, #ffe6f0);
   border-radius: 16px;
   padding: 12px;
   margin-top: 12px;
-  border: 1px solid rgba(230, 236, 255, 0.8);
+  border: 1px solid rgba(255, 220, 236, 0.8);
 }
 
 .history-item {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  border-bottom: 1px dashed rgba(203, 217, 255, 0.8);
+  border-bottom: 1px dashed rgba(255, 198, 220, 0.8);
 }
 
 .history-item:last-child {
@@ -280,20 +291,20 @@ button {
   margin: 32px auto 18px;
   padding: 12px 18px;
   text-align: center;
-  color: #6b7a99;
+  color: #8a5f73;
   font-size: 14px;
   letter-spacing: 0.2px;
-  background: linear-gradient(120deg, rgba(224, 235, 255, 0.6), rgba(200, 220, 255, 0.3));
+  background: linear-gradient(120deg, rgba(255, 231, 242, 0.75), rgba(255, 210, 228, 0.4));
   border-radius: 14px;
-  border: 1px solid rgba(200, 220, 255, 0.8);
-  box-shadow: 0 6px 20px rgba(31, 58, 120, 0.08);
+  border: 1px solid rgba(255, 200, 222, 0.8);
+  box-shadow: 0 6px 20px rgba(240, 98, 146, 0.16);
   max-width: 360px;
 }
 
 .notice-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(235, 242, 255, 0.72);
+  background: rgba(255, 236, 244, 0.76);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,24 +315,24 @@ button {
 
 .notice-card {
   width: min(420px, 92vw);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(243, 247, 255, 0.92));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 240, 247, 0.94));
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(31, 58, 120, 0.18);
+  box-shadow: 0 20px 40px rgba(240, 98, 146, 0.25);
   padding: 24px 20px;
   text-align: center;
-  border: 1px solid rgba(220, 232, 255, 0.8);
+  border: 1px solid rgba(255, 220, 236, 0.85);
 }
 
 .notice-title {
   font-size: 20px;
   font-weight: 700;
-  color: #1f2f57;
+  color: #6b2d4a;
   margin-bottom: 10px;
 }
 
 .notice-text {
   font-size: 15px;
-  color: #5d6a86;
+  color: #8a5f73;
   margin-bottom: 16px;
   line-height: 1.6;
 }
@@ -333,8 +344,8 @@ button {
   margin-top: 10px;
   padding: 6px 10px;
   border-radius: 12px;
-  background: rgba(236, 244, 255, 0.9);
-  border: 1px solid rgba(200, 220, 255, 0.7);
+  background: rgba(255, 234, 243, 0.9);
+  border: 1px solid rgba(255, 200, 222, 0.7);
 }
 
 @media (min-width: 768px) {
